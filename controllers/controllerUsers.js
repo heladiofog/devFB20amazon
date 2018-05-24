@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 //Create new user - CREATE
 
-app.post('/users', (req, res) =>{
+app.post('/api/v1/users', (req, res) =>{
     const{ Id, email, nombre, telefono, genero, metodoDePago, password, fechaDeNacimiento} = req.body;
     let newUser = Users({
         Id,
