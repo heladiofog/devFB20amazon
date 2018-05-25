@@ -3,6 +3,9 @@ import cors from 'cors';
 import parser from 'body-parser';
 import routers from './routers';
 //import db from './models';
+//import bcrypt from'bcryptjs';
+
+
 
 const app = express()
 const port = process.env.PORT || 8000
