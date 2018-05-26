@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const Users = require('../models/userModel');
+const User = require('../models/userModel');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -11,14 +11,9 @@ app.use(bodyParser.json());
 app.post('/api/v1/users', (req, res) =>{
     const{ Id, email, nombre, telefono, genero, metodoDePago, password, fechaDeNacimiento} = req.body;
     let newUser = Users({
-        Id,
         email,
         nombre, 
-        telefono, 
-        genero, 
-        metodoDePago, 
-        password, 
-        fechaDeNacimiento
+        password
     });
     newUser.save((error, user) => {
         if(error) throw(error);
@@ -56,6 +51,6 @@ app.delete('/users/:uid', (req, res) =>{
     )
 })
 
-app.listen(3000, () =>{
-    console.log('Server on 3000')
+app.listen(5432, () =>{
+    console.log('Server on 5432')
 })

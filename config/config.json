@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "prueba",
-    "password": "Mayo2018!",
-    "database": "database_development",
-    "host": "127.0.0.1",
+    "username": "devfmaster",
+    "password": "devfpassword",
+    "database": "devfdatabasename",
+    "host": "devfinstance.c6vwxiu244iw.us-east-2.rds.amazonaws.com",
     "dialect": "postgres"
   },
   "test": {
@@ -11,13 +11,13 @@
     "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   },
   "production": {
     "username": "root",
     "password": null,
     "database": "database_production",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   }
 }
