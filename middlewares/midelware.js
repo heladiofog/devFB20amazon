@@ -1,6 +1,9 @@
-var jwt =require('jsonwebtoken')
+//var jwt =require('jsonwebtoken')
+import jsonwebtoken from 'jsonwebtoken'
 //var bcrypt = require('bcrypt');
-var key =require('./confing')
+
+// var key =require('./confing')
+import key from './config'
 
 console.log(key)
 
@@ -44,5 +47,8 @@ function verificar(token,key){
 
 }
 
-var token=generaToken(user,key)
-var res= verificar(token,key)
+//var token=generaToken(user,key)
+let token=generaToken(user,key)
+
+// var res= verificar(token,key)
+let res= verificar(token,key)
