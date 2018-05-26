@@ -1,13 +1,22 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
-const Users = require('../models/userModel');
+import express from 'express';
+import db from '../models';
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+const User = db.User
 
 //Create new user - CREATE
+const createUser = (req, res) => {
+    User.create({
+        email: req.body.email,
+        nombre: req.body.nombre,
+        password: req.body.password
+    }).then((user) => {
+        res.status(201).json(user)
+    }).catch((err) => {
+        res.status(400).json(err)
+    })
+}
 
+/*
 app.post('/api/v1/users', (req, res) =>{
     const{ Id, email, nombre, telefono, genero, metodoDePago, password, fechaDeNacimiento} = req.body;
     let newUser = Users({
@@ -58,4 +67,8 @@ app.delete('/users/:uid', (req, res) =>{
 
 app.listen(3000, () =>{
     console.log('Server on 3000')
-})
+})*/
+
+export{
+    createUser
+}
