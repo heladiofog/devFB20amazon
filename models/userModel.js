@@ -17,35 +17,15 @@ var User = sequelize.define('user', {
             notEmpty: true
         }
     },
-    telefono: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
-    genero:{
-        type: DataTypes.STRING,
-        validate:{
-            allowNull: true
-        }
-    },
-    metodoDePago:{
-        type: DataTypes.STRING,
-        validate:{
-            allowNull: true
-        }
-    },
+    
+    
     password:{
         type: DataTypes.STRING,
         validate: {
             notEmpty: true
         }
-    },
-    fechaDeNacimiento:{
-        type: DataTypes.DATE,
-        validate:{
-            isDate: true,
-            allowNull: true
-        }
     }
+
   })
 }
 
