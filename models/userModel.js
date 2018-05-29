@@ -1,7 +1,6 @@
 
 module.exports = (sequelize, DataTypes) => {
-var User = sequelize.define('user', {
-    
+const User = sequelize.define('User', {
     email: {
       type: DataTypes.STRING,
       unique: true,
@@ -13,7 +12,6 @@ var User = sequelize.define('user', {
     nombre: {
         type: DataTypes.STRING,
         validate: {
-            isAlpha: true,
             notEmpty: true
         }
     },
@@ -27,6 +25,11 @@ var User = sequelize.define('user', {
     }
 
   })
+
+  User.associate = function(models) {
+    // associations can be defined here
+  };
+  return User;
 }
 
 

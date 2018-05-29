@@ -21,7 +21,7 @@ fs
   })
   .forEach(file => {
     var model = sequelize['import'](path.join(__dirname, file));
-    // db[model.name] = model;
+    db[model.name] = model;
   });
 
 Object.keys(db).forEach(modelName => {
@@ -32,5 +32,7 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+const Op = Sequelize.Op;
 
 module.exports = db;

@@ -26,10 +26,12 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.1",
+    "npm": "^6.1.0",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.37.8",
-    "sequelize-cli": "^4.0.0"
+    "swagger-jsdoc": "^1.9.7",
+    "swagger-ui-express": "^3.0.9"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
