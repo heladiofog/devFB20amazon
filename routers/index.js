@@ -33,6 +33,6 @@ router.get('/test', testApi);
 
 router.post('/users', createUser);
 
-router.get('/userById', getById)
+// router.get('/userById', getById)
 
 export default router
