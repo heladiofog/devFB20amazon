@@ -3,7 +3,7 @@ import jsonwebtoken from 'jsonwebtoken'
 //var bcrypt = require('bcrypt');
 
 // var key =require('./confing')
-import key from './config'
+import {key} from './config'
 
 console.log(key)
 
