@@ -1,7 +1,7 @@
 import express from 'express';
 import {testApi} from '../controllers';
 //Added from s1-002
-import {login} from '../controllers';
+import {login} from '../controllers/auth';
 
 
 const router = express.Router();
