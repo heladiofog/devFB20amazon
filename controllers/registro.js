@@ -48,4 +48,3 @@ app.post("/api/v1/user/create",(req,res)=>{
 export {
   crypt
 }
-console.log("hola");
