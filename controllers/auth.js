@@ -4,14 +4,15 @@ import express from 'express'
 import {login} from '../managers/auth'
 
 
-
+// TODO Return "algo"
 const authlogin = (req, res) =>{ 
    login(req,res)
                 .then((token)=> {res.status(200).send(token)})
                 .catch((err)=> {res.status(400).send(err)})
+            
 };
 
 
-export{
+export {
     authlogin
 }

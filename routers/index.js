@@ -1,14 +1,14 @@
 import express from 'express';
 import {testApi} from '../controllers';
 //Added from s1-002
-import {login} from '../controllers/auth';
+import {authlogin} from '../controllers/auth';
 
 
 const router = express.Router();
 
 router.get('/test', testApi);
 //Added from s1-002
-router.post('/login',  login);
+router.post('/login',  authlogin);
 
-export default login
-export default router
+export default router 
+ 

@@ -1,9 +1,9 @@
 import jsonwebtoken from 'jsonwebtoken'
 
 // var key =require('./confing')
-import key from './config'
+import {key} from '../config/config'
+const jwt = jsonwebtoken
 
-console.log(key)
 
 const user={
     id:3,
@@ -17,8 +17,8 @@ const cabecera={
 
 function generaToken(user,key){ 
 
-    const token=jwt.sign({user},key,{
-        expiresIn:86400
+    const token=jwt.sign(user, key, {
+        expiresIn: 86400
     })
     //console.log(token)
     return token

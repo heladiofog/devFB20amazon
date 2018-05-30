@@ -2,8 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import parser from 'body-parser';
 import routers from './routers';
-//import db from './models';
-//import bcrypt from'bcryptjs';
+import db from './models';
+import bcrypt from'bcryptjs';
 
 
 
@@ -16,5 +16,5 @@ app.use(cors())
 
 app.use('/api/v1', routers)
 app.listen(port, () => {
-    console.log(`Server star at port ${port}`)
+    console.log(`Server start at port ${port}`)
 })
