@@ -6,8 +6,8 @@ import {login} from '../managers/auth'
 
 // TODO Return "algo"
 const authlogin = (req, res) =>{ 
-   login(req,res)
-                .then((token)=> {res.status(200).send(token)})
+   login(req)
+                .then((token)=> {res.status(200).send({token: token})})
                 .catch((err)=> {res.status(400).send(err)})
             
 };
