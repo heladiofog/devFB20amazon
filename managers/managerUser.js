@@ -19,9 +19,9 @@ const createUserMan = (userData) => {
 
 //Get user by Id - Read 
 
-const getById = (req, res) => {
-    console.log(req.body)
-    const {uid} = req.params
+const getById = (iduser) => {
+    console.log(iduser)
+    const {uid} = iduser
         console.log(uid)
     User.findById(uid).then(user => {
         res.send(user)
