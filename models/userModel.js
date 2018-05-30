@@ -25,6 +25,7 @@ const User = sequelize.define('User', {
     }
 
   })
+
   User.beforeCreate((user)=>{
     console.log('before')
     return crypt(user.password) 
@@ -35,6 +36,7 @@ const User = sequelize.define('User', {
        })
         
    })
+   
    let crypt = (password) => {
        return new Promise ((resolve,reject)=>{
         bcrypt.genSalt(10,(err,salt)=>{

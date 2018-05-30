@@ -1,7 +1,8 @@
 import express from 'express';
 import {testApi} from '../controllers';
 import {createUser} from '../controllers/controllerUsers';
-import {getById} from '../controllers/controllerUsers'
+//import {getById} from '../controllers/controllerUsers'
+
 
 const router = express.Router();
 
@@ -34,6 +35,6 @@ router.get('/test', testApi);
 
 router.post('/users', createUser);
 
-router.get('/users/:uid', getById)
+//router.get('/users/:uid', getById)
 
 export default router
