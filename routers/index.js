@@ -5,6 +5,7 @@ import {testApi} from '../controllers';
 import {authlogin} from '../controllers/auth';
 import {createUser} from '../controllers/controllerUsers';
 import {getById} from '../controllers/controllerUsers'
+import {verifyToken} from '../middlewares/midelware'
 
 const router = express.Router();
 
@@ -33,8 +34,7 @@ const router = express.Router();
  *       400:
  *         description: Bad request
  */
-router.get('/test', testApi);
-//Added from s1-002
+router.get('/test', verifyToken, testApi);
 router.post('/login',  authlogin);
 router.post('/users', createUser);
 router.get('/users/:uid', getById)
