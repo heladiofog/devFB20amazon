@@ -22,9 +22,35 @@ const User = sequelize.define('User', {
         validate: {
             notEmpty: true
         }
+    },
+
+    gender:{
+        type: DataTypes.STRING,
+        validate: {
+            allowNull: true
+        }
+    },
+    
+    birdthDate:{
+        type: DataTypes.STRING,
+        validate:{
+            isDate: true,
+            allowNull: true
+        }
+    },
+
+    status:{
+        type: DataTypes.BOOLEAN,
+        validate:{
+           allowNull: false,
+           defaultValue: true 
+        } 
+        
     }
 
-  })
+  });
+
+  genero:{}
 
   User.beforeCreate((user)=>{
     return crypt(user.password) 
