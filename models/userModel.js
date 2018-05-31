@@ -27,9 +27,8 @@ const User = sequelize.define('User', {
   })
 
   User.beforeCreate((user)=>{
-    console.log('before')
     return crypt(user.password) 
-       .then(success => {console.log(success);user.password = success})
+       .then(success => {user.password = success})
        .catch(err => {
            if (err) 
         console.log(err)
@@ -43,7 +42,6 @@ const User = sequelize.define('User', {
             if(err) reject(err)
             bcrypt.hash(password,salt,null,(err,hash) => {
                 if(err) reject(err)
-                console.log(hash);
                 resolve(hash)
                 
             });

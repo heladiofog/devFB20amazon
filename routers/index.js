@@ -1,5 +1,8 @@
 import express from 'express';
 import {testApi} from '../controllers';
+
+//Added from s1-002
+import {authlogin} from '../controllers/auth';
 import {createUser} from '../controllers/controllerUsers';
 //import {getById} from '../controllers/controllerUsers'
 
@@ -32,9 +35,13 @@ const router = express.Router();
  *         description: Bad request
  */
 router.get('/test', testApi);
-
+//Added from s1-002
+router.post('/login',  authlogin);
 router.post('/users', createUser);
+
 
 //router.get('/users/:uid', getById)
 
+
 export default router
+

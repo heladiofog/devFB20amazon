@@ -6,6 +6,7 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import db from './models';
 
+
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -33,6 +34,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 app.use('/api/v1', routers)
 app.listen(port, () => {
+    console.log(`Server start at port ${port}`)
+
     //db.sequelize.sync()
-    console.log(`Server star at port ${port}`)
-})
+});
