@@ -38,8 +38,8 @@ const User = sequelize.define('User', {
             allowNull: true
         }
     },
-
-    status:{
+    //Sirve para ver el estado del usuario (borrado logico)
+    status:{ 
         type: DataTypes.BOOLEAN,
         validate:{
            allowNull: false,
@@ -48,9 +48,9 @@ const User = sequelize.define('User', {
         
     }
 
-  });
+  })
 
-  genero:{}
+//   genero:{}
 
   User.beforeCreate((user)=>{
     return crypt(user.password) 

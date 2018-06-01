@@ -33,15 +33,18 @@ const getById = (iduser) => {
     })
 }
 
-const patchUserMan = (iduser) =>{
-    //console.log(iduser)
-    const {uid} = iduser
-    //console.log(uid)
-    User.findByIdAndUpdate(uid, req.body, (err, user) =>{
-        User.findById(uid)
-            .then(user => res.send(user))
-            res.send(user);
+const patchUserMan = (req) =>{
+    return new Promise ((resolve, reject ) =>{
+        User.findByIdAndUpdate()
     })
+    // //console.log(iduser)
+    // const {uid} = iduser
+    // //console.log(uid)
+    // User.findByIdAndUpdate(uid, req.body, (err, user) =>{
+    //     User.findById(uid)
+    //         .then(user => res.send(user))
+    //         res.send(user);
+    // })
 }
 // app.patch('/users/:uid' , (req, res) =>{
 //         const {uid} = req.params;
