@@ -1,4 +1,5 @@
 import {createUserMan} from '../managers/managerUser'
+import {patchUserMan} from '../managers/managerUser'
 
 //Create new user - CREATE
 const createUser = (req, res) => {
@@ -6,18 +7,19 @@ const createUser = (req, res) => {
     createUserMan(data)
     .then((user) => {
         if (user) {
-            res.status(201).json(user)
+            res.status(201).json(user) //ok
             
         } else {
             res.status(400).json('err on controller')//error   
         }
     })
-      //ok
     .catch(err => {
         console.log(err)
         res.status(500).json({'message' :'error on create'})
     })
 }
+
+
 
 //Get user by Id - Read 
 
@@ -34,7 +36,7 @@ const createUser = (req, res) => {
 
 
 
-// //Update users - Update
+//Update users - Update
 // app.patch('/users/:uid' , (req, res) =>{
 //     const {uid} = req.params;
 //     Users.findByIdAndUpdate(uid, req.body, (err, user) =>{
