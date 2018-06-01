@@ -20,10 +20,9 @@ const login = (req) => {
                         {
                             id:user.id, 
                             correo: user.email, 
-                            nombre:user.nombre, 
-                            expiresIn: 86400
+                            nombre:user.nombre  
                         }
-                            const token=jwt.sign(tokenUser, key)
+                            const token=jwt.sign(tokenUser, key, {expiresIn: 86400})
                     resolve(token)
                     }              
                 })})
