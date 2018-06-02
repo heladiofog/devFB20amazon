@@ -24,14 +24,14 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         
-        gender:{
+        genero:{
             type: DataTypes.STRING,
             validate: {
                 allowNull: true
             }
         },
         
-        birdthDate:{
+        fechaDeNacimiento:{
             type: DataTypes.STRING,
             validate:{
                 isDate: true,
@@ -39,14 +39,14 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         //Sirve para ver el estado del usuario (borrado logico)
-        status:{ 
-            type: DataTypes.BOOLEAN,
-            validate:{
-                allowNull: false,
-                defaultValue: true 
-            } 
+        // status:{ 
+        //     type: DataTypes.BOOLEAN,
+        //     validate:{
+        //         allowNull: false,
+        //         defaultValue: true 
+        //     } 
             
-        }
+        //}
         
     })
     

@@ -34,6 +34,8 @@ const router = express.Router();
  *       400:
  *         description: Bad request
  */
+
+ //Este test prueba la función verifyToken, si es correcto, entra la función testApi
 router.get('/test', verifyToken, testApi);
 router.post('/login',  authlogin);
 router.post('/users', createUser);
