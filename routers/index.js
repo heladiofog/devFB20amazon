@@ -3,8 +3,7 @@ import {testApi} from '../controllers';
 
 //Added from s1-002
 import {authlogin} from '../controllers/auth';
-import {createUser} from '../controllers/controllerUsers';
-import {getById} from '../controllers/controllerUsers'
+import {createUser, patchUser, getById} from '../controllers/controllerUsers';
 import {verifyToken} from '../middlewares/midelware'
 
 const router = express.Router();
@@ -37,7 +36,7 @@ const router = express.Router();
 router.get('/test', verifyToken, testApi);
 router.post('/login',  authlogin);
 router.post('/users', createUser);
-router.patch('/users', verifyToken, updateUser)
+router.patch('/users', verifyToken, patchUser)
 
 //router.get('/users/:uid', getById)
 

@@ -19,6 +19,20 @@ const createUser = (req, res) => {
     })
 }
 
+const patchUser = (req, res) =>{
+    patchUserMan(req)
+        .then((user) =>{
+            if(user){
+                res.status(202).json(user)
+            } else{
+                res.status(400).json('we couldnt update the user info')
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({'message': err})
+        })
+}
 
 
 //Get user by Id - Read 
@@ -60,5 +74,6 @@ const createUser = (req, res) => {
 // })
 
 export{
-    createUser
+    createUser,
+    patchUser
 }

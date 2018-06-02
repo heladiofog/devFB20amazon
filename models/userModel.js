@@ -24,29 +24,22 @@ const User = sequelize.define('User', {
         }
     },
 
-    gender:{
-        type: DataTypes.STRING,
-        validate: {
-            allowNull: true
-        }
+    genero:{
+        type: DataTypes.STRING
     },
     
-    birdthDate:{
-        type: DataTypes.STRING,
-        validate:{
-            isDate: true,
-            allowNull: true
-        }
+    fechaDeNacimiento:{
+        type: DataTypes.DATE
     },
     //Sirve para ver el estado del usuario (borrado logico)
-    status:{ 
-        type: DataTypes.BOOLEAN,
-        validate:{
-           allowNull: false,
-           defaultValue: true 
-        } 
+    // status:{ 
+    //     type: DataTypes.BOOLEAN,
+    //     validate:{
+    //        allowNull: false,
+    //        defaultValue: true 
+    //     } 
         
-    }
+    // }
 
   })
 
