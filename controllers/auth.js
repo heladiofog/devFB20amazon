@@ -4,12 +4,25 @@ import express from 'express'
 import {login} from '../managers/auth'
 
 
-// TODO Return "algo"
+// Este método es un login, regresa el token y true o el error
 const authlogin = (req, res) =>{ 
-   login(req)
-                .then((token)=> {res.status(200).send({token: token})})
-                .catch((err)=> {res.status(400).send(err)})
-            
+    login(req)
+    .then((token)=> {
+        res.status(200).send(
+            {
+                auth : true,
+                token: token
+            }
+    )})
+    .catch((err)=> {
+        res.status(400).send(
+            {
+                auth:false,
+                error:err
+            }
+        )
+    });
+
 };
 
 

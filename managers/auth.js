@@ -13,26 +13,29 @@ const User = db.User
 const login = (req) => {
     return new Promise ((resolve, reject) =>{
         User.find({where:{email:req.body.email}})
-                .then((user)=> {
-                    bcrypt.compare(req.body.password, user.password ,(err, respose)=>{
-                    if (err) reject (err);
-                    else {let tokenUser =
-                        {
-                            id:user.id, 
-                            correo: user.email, 
-                            nombre:user.nombre  
-                        }
-                            const token=jwt.sign(tokenUser, key, {expiresIn: 86400})
+        .then((user)=> {
+            bcrypt.compare(req.body.password, user.password ,(err, respose)=>{
+                if (err) reject (err);
+                else {let tokenUser =
+                    {
+                        id:user.id, 
+                        correo: user.email, 
+                        nombre:user.nombre  
+                    }
+                    const token=jwt.sign(tokenUser, key, {expiresIn: 86400})
                     resolve(token)
-                    }              
-                })})
-                .catch((err)=> {
-                reject(err);
-                })   
-})};
-
-
-
-export {
-    login
-}
+                }              
+            })
+        })
+        .catch((err)=> {
+             reject(err);
+        })   
+    })
+};
+        
+        
+        
+        export {
+            login
+        }
+        

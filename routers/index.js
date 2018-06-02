@@ -37,7 +37,7 @@ const router = express.Router();
 router.get('/test', verifyToken, testApi);
 router.post('/login',  authlogin);
 router.post('/users', createUser);
-router.patch('/users', verifyToken, updateUser)
+//router.patch('/users', verifyToken, updateUser);
 
 //router.get('/users/:uid', getById)
 
