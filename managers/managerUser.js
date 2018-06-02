@@ -8,7 +8,7 @@ const createUserMan = (userData) => {
     return new Promise ((resolve,reject)=>{
         User.create({
             email: userData.email,
-            nombre: userData.nombre,
+            name: userData.name,
             password: userData.password,
             gender: userData.gender,
             birdthDate: userData.birdthDate,
@@ -38,9 +38,9 @@ const getById = (iduser) => {
 const patchUserMan = (req) =>{
     return new Promise ((resolve, reject ) =>{
         User.update({
-            nombre: req.body.nombre,
-            genero: req.body.genero,
-            fechaDeNacimiento: req.body.fechaDeNacimiento,
+            name: req.body.name,
+            gender: req.body.gender,
+            birdthDate: req.body.birdthDate,
         },{
             where:{
                 id:req.user.id

@@ -29,7 +29,7 @@
     "npm": "^6.1.0",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.37.8",
+    "sequelize": "^4.37.10",
     "swagger-jsdoc": "^1.9.7",
     "swagger-ui-express": "^3.0.9"
   },
