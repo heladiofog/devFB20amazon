@@ -22,9 +22,36 @@ const User = sequelize.define('User', {
         validate: {
             notEmpty: true
         }
+    },
+
+    gender:{
+        type: DataTypes.STRING,
+        validate: {
+            allowNull: true
+        }
+    },
+    
+    birdthDate:{
+        type: DataTypes.STRING,
+        validate:{
+            isDate: true,
+            allowNull: true
+        }
+    },
+    //Sirve para ver el estado del usuario (borrado logico)
+    status:{ 
+        type: DataTypes.BOOLEAN,
+        validate:{
+           allowNull: false,
+           defaultValue: true 
+        } 
+        
     }
 
   })
+
+//   genero:{}
+
   User.beforeCreate((user)=>{
     return crypt(user.password) 
        .then(success => {user.password = success})
@@ -34,6 +61,7 @@ const User = sequelize.define('User', {
        })
         
    })
+   
    let crypt = (password) => {
        return new Promise ((resolve,reject)=>{
         bcrypt.genSalt(10,(err,salt)=>{

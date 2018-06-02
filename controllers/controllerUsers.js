@@ -1,36 +1,42 @@
-import express from 'express';
-import db from '../models';
-
-const User = db.User
+import {createUserMan} from '../managers/managerUser'
+import {patchUserMan} from '../managers/managerUser'
 
 //Create new user - CREATE
 const createUser = (req, res) => {
-    User.create({
-        email: req.body.email,
-        nombre: req.body.nombre,
-        password: req.body.password
-    }).then((user) => {
-        res.status(201).json(user)
-    }).catch((err) => {
-        res.status(400).json(err)
+    let data = req.body
+    createUserMan(data)
+    .then((user) => {
+        if (user) {
+            res.status(201).json(user) //ok
+            
+        } else {
+            res.status(400).json('err on controller')//error   
+        }
     })
-}
-
-//Get user by Id - Read
-
-const getById = (req, res) =>{
-    const {uid} = req.params
-    console.log(uid)
-    User.findById(uid).exec().then(user => {
-        res.send(user)
-    }).catch(err =>{
-        res.status(404).send(err)
+    .catch(err => {
+        console.log(err)
+        res.status(500).json({'message' :'error on create'})
     })
 }
 
 
 
-// //Update users - Update
+//Get user by Id - Read 
+
+// const getById = (req, res) => {
+//     console.log(req.body)
+//     const {uid} = req.params
+//         console.log(uid)
+//     User.findById(uid).then(user => {
+//         res.send(user)
+//     }).catch(err =>{
+//         res.status(404).send(err)
+//     })
+// }
+
+
+
+//Update users - Update
 // app.patch('/users/:uid' , (req, res) =>{
 //     const {uid} = req.params;
 //     Users.findByIdAndUpdate(uid, req.body, (err, user) =>{
@@ -54,6 +60,5 @@ const getById = (req, res) =>{
 // })
 
 export{
-    createUser,
-    getById
+    createUser
 }
