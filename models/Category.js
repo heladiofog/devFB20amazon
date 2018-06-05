@@ -7,4 +7,10 @@ module.exports = (sequelie, DataTypes) => {
         allowNull: false
 
     })
-}
+};
+
+Name.associate = function(models){
+
+};
+
+return Name;
