@@ -36,5 +36,7 @@ app.use('/api/v1', routers)
 app.listen(port, () => {
     console.log(`Server start at port ${port}`)
 
-    //db.sequelize.sync()
+    // db.sequelize.sync({
+    //     force: true
+    // })
 });

@@ -6,46 +6,35 @@ module.exports = (sequelize, DataTypes) => {
             unique: true,
             validate:{
                 isEmail: true,
-                notEmpty: true
-            }
+            },
+            allowNull: false
         },
-        nombre: {
+        name: {
             type: DataTypes.STRING,
-            validate: {
-                notEmpty: true
-            }
+            allowNull: false
         },
         
         
         password:{
             type: DataTypes.STRING,
-            validate: {
-                notEmpty: true
-            }
+            allowNull: false
         },
         
         gender:{
-            type: DataTypes.STRING,
-            validate: {
-                allowNull: true
-            }
+            type: DataTypes.STRING
         },
         
-        birdthDate:{
-            type: DataTypes.STRING,
-            validate:{
-                isDate: true,
-                allowNull: true
-            }
+        birthDate:{
+            type: DataTypes.DATE
         },
         //Sirve para ver el estado del usuario (borrado logico)
         status:{ 
             type: DataTypes.BOOLEAN,
             validate:{
-                allowNull: false,
-                defaultValue: true 
-            } 
-            
+               defaultValue: true 
+            },
+             
+        
         }
         
     })

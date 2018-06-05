@@ -1,5 +1,6 @@
 import db from '../models';
 
+
 const User = db.User
 
 //Create new user - CREATE
@@ -7,7 +8,7 @@ const createUserMan = (userData) => {
     return new Promise ((resolve,reject)=>{
         User.create({
             email: userData.email,
-            nombre: userData.nombre,
+            name: userData.name,
             password: userData.password,
             gender: userData.gender,
             birdthDate: userData.birdthDate,
@@ -23,29 +24,37 @@ const createUserMan = (userData) => {
 //Get user by Id - Read 
 
 const getById = (iduser) => {
-    console.log(iduser)
-    const {uid} = iduser
-        console.log(uid)
-    User.findById(uid).then(user => {
-        res.send(user)
-    }).catch(err =>{
-        res.status(404).send(err)
+    return new Promise ((resolve, reject) =>{
+        console.log(iduser)
+        User.findById(iduser).then(user => {
+            resolve(user)
+        }).catch(err =>{    
+            reject(err)
+        }) 
     })
+    
 }
 
 const patchUserMan = (req) =>{
     return new Promise ((resolve, reject ) =>{
-        User.findByIdAndUpdate()
-    })
-    // //console.log(iduser)
-    // const {uid} = iduser
-    // //console.log(uid)
-    // User.findByIdAndUpdate(uid, req.body, (err, user) =>{
-    //     User.findById(uid)
-    //         .then(user => res.send(user))
-    //         res.send(user);
-    // })
+        User.update({
+            name: req.body.name,
+            gender: req.body.gender,
+            birdthDate: req.body.birdthDate,
+        },{
+            where:{
+                id:req.user.id
+            }
+        }).then(user1 => {
+            getById(req.user.id)
+                .then(user => resolve(user))
+                .catch(err => reject(err))
+        }).catch(err => {
+            reject(err)
+        })      
+    })    
 }
+
 // app.patch('/users/:uid' , (req, res) =>{
 //         const {uid} = req.params;
 //         Users.findByIdAndUpdate(uid, req.body, (err, user) =>{
