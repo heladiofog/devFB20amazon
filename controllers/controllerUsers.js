@@ -1,4 +1,4 @@
-import {createUserMan, patchUserMan, deleteUserMan} from '../managers/managerUser'
+import {createUserMan, patchUserMan, deleteUserMan, getByIdMan} from '../managers/managerUser'
 
 //Create new user - CREATE
 const createUser = (req, res) => {
@@ -36,7 +36,15 @@ const patchUser = (req, res) =>{
 const deleteUser = (req, res) => {
    deleteUserMan(req)
     .then((user) => {
-        if(user){}
+        if(user){
+            res.status(202).json(user)
+        } else{
+            res.status(400).json("Couldnt delete the user")
+        }
+    })
+    .catch(err => {
+        console.log(err)
+        res.status(500).json({'message': err})
     }) 
 }
 
@@ -55,10 +63,7 @@ const getById = (req, res) => {
 }
 
 
-// //Delete all users - Delete
 
-// app.delete('/users/:uid', (req, res) =>{
-//     const {uid} = req.params;
 
 
 

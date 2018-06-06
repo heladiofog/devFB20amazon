@@ -3,9 +3,8 @@ import {testApi} from '../controllers';
 
 //Added from s1-002
 import {authlogin} from '../controllers/auth';
-import {createUser, patchUser, getById} from '../controllers/controllerUsers';
+import {createUser, patchUser, getById, deleteUser} from '../controllers/controllerUsers';
 import {verifyToken} from '../middlewares/midelware'
-import { deleteUserMan } from '../managers/managerUser';
 
 const router = express.Router();
 

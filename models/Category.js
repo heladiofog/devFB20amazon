@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     const Category = sequelize.define("Category", {
         name: {
-            types: DataTypes.STRING,
+            type: DataTypes.STRING,
             unique: true,
             allowNull: false
         },
