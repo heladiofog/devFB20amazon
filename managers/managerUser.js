@@ -33,7 +33,7 @@ const getByIdMan = (iduser) => {
         }) 
     })
     
-}
+ }
 
 const patchUserMan = (req) =>{
     return new Promise ((resolve, reject ) =>{

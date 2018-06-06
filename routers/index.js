@@ -39,7 +39,7 @@ router.post('/users', createUser);
 router.patch('/users', verifyToken, patchUser)
 router.delete('/users', deleteUser)
 
-//router.get('/users/:uid', getById)
+// router.get('/users', getById)
 
 
 export default router

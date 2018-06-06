@@ -64,9 +64,6 @@ const getById = (req, res) => {
 
 
 
-
-
-
 export{
     createUser,
     patchUser,
