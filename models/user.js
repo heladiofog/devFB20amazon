@@ -10,14 +10,14 @@ const User = sequelize.define('User', {
           notEmpty: true
       }
     },
-    nombre: {
+    name: {
         type: DataTypes.STRING,
         validate: {
             notEmpty: true
         }
     },
-    
-    
+
+
     password:{
         type: DataTypes.STRING,
         validate: {
@@ -31,7 +31,7 @@ const User = sequelize.define('User', {
             allowNull: true
         }
     },
-    
+
     birdthDate:{
         type: DataTypes.STRING,
         validate:{
@@ -40,13 +40,13 @@ const User = sequelize.define('User', {
         }
     },
     //Sirve para ver el estado del usuario (borrado logico)
-    status:{ 
+    status:{
         type: DataTypes.BOOLEAN,
         validate:{
            allowNull: false,
-           defaultValue: true 
-        } 
-        
+           defaultValue: true
+        }
+
     }
 
   })
@@ -54,15 +54,15 @@ const User = sequelize.define('User', {
 //   genero:{}
 
   User.beforeCreate((user)=>{
-    return crypt(user.password) 
+    return crypt(user.password)
        .then(success => {user.password = success})
        .catch(err => {
-           if (err) 
+           if (err)
         console.log(err)
        })
-        
+
    })
-   
+
    let crypt = (password) => {
        return new Promise ((resolve,reject)=>{
         bcrypt.genSalt(10,(err,salt)=>{
@@ -70,7 +70,7 @@ const User = sequelize.define('User', {
             bcrypt.hash(password,salt,null,(err,hash) => {
                 if(err) reject(err)
                 resolve(hash)
-                
+
             });
         });
     });
