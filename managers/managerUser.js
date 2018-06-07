@@ -23,7 +23,7 @@ const createUserMan = (userData) => {
 
 //Get user by Id - Read 
 
-const getById = (iduser) => {
+const getByIdMan = (iduser) => {
     return new Promise ((resolve, reject) =>{
         console.log(iduser)
         User.findById(iduser).then(user => {
@@ -33,7 +33,7 @@ const getById = (iduser) => {
         }) 
     })
     
-}
+ }
 
 const patchUserMan = (req) =>{
     return new Promise ((resolve, reject ) =>{
@@ -55,17 +55,33 @@ const patchUserMan = (req) =>{
     })    
 }
 
-// app.patch('/users/:uid' , (req, res) =>{
-//         const {uid} = req.params;
-//         Users.findByIdAndUpdate(uid, req.body, (err, user) =>{
-//             Users.findById(uid).exec()
-//                 .then(user => res.send(user))
-//                 res.send(user);
-//         }).catch(err => res.send(err));
-//     });
+const deleteUserMan = (req) => {
+    return new Promise( (resolve, reject) =>{
+        User.destroy({
+            email: req.body.email,
+            name: req.body.name,
+            password: req.body.password,
+            gender: req.body.gender,
+            birdthDate: req.body.birdthDate,
+            status: req.body.status
+        },{
+            where:{
+                id:req.user.id
+            }
+        }).then(user2 => {
+            deleteUser(req.user.id)
+                .then(user => resolve(user))
+                .catch(err => reject(err))
+            }).catch(err => {
+                reject(err)
+            })
+    })
+}
+
 
 export{
     createUserMan,
-    getById,
-    patchUserMan
+    getByIdMan,
+    patchUserMan,
+    deleteUserMan
 }

@@ -17,8 +17,6 @@ function verificarToken(token,key){
             return(403)
         }
         else{
-            console.log("-----------")
-            console.log(data)
             return(data)
         }
     }) 

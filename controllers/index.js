@@ -1,9 +1,5 @@
 
 
-
-
-
-
 const login = (req, res)=> {
   
 }

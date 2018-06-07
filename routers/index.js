@@ -1,16 +1,11 @@
+
 import express from 'express';
 import {testApi} from '../controllers';
 
 //Added from s1-002
 import {authlogin} from '../controllers/auth';
-<<<<<<< HEAD
-import {createUser} from '../controllers/controllerUsers';
-import {getById} from '../controllers/controllerUsers';
-import {verifyToken} from '../middlewares/midelware';
-=======
-import {createUser, patchUser, getById} from '../controllers/controllerUsers';
+import {createUser, patchUser, getById, deleteUser} from '../controllers/controllerUsers';
 import {verifyToken} from '../middlewares/midelware'
->>>>>>> 7e0501a84747f5b0cfcb097354a6af01c1f4b156
 
 const router = express.Router();
 
@@ -39,17 +34,15 @@ const router = express.Router();
  *       400:
  *         description: Bad request
  */
+
+ //Este test prueba la función verifyToken, si es correcto, entra la función testApi
 router.get('/test', verifyToken, testApi);
 router.post('/login',  authlogin);
 router.post('/users', createUser);
-<<<<<<< HEAD
-//router.patch('/users', verifyToken, updateUser);
-=======
 router.patch('/users', verifyToken, patchUser)
->>>>>>> 7e0501a84747f5b0cfcb097354a6af01c1f4b156
+router.delete('/users', deleteUser)
 
-//router.get('/users/:uid', getById)
+// router.get('/users', getById)
 
 
 export default router
-
