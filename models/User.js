@@ -21,20 +21,20 @@ module.exports = (sequelize, DataTypes) => {
         },
         
         gender:{
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: true
         },
         
         birthDate:{
-            type: DataTypes.DATE
+            type: DataTypes.DATE,
+            allowNull: true
         },
         //Sirve para ver el estado del usuario (borrado logico)
         status:{ 
             type: DataTypes.BOOLEAN,
             validate:{
                defaultValue: true 
-            },
-             
-        
+            } 
         }
         
     })
