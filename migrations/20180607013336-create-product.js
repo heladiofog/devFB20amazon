@@ -1,31 +1,55 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Products', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
+    return queryInterface.createTable('Product', {
+      shortName: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+            
+    description:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    
+    unitPrice:{
+        type: Sequelize.DECIMAL(10,2),
+        allowNull: false
+    },
+    
+    itemSKU:{
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+
+    Stock:{
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+
+    image:{
+        type: Sequelize.BLOB
+    },
+
+    CategoryId:{
         type: Sequelize.INTEGER
-      },
-      name: {
-        type: Sequelize.STRING
-      },
-      desc: {
-        type: Sequelize.STRING
-      },
-      price: {
-        type: Sequelize.NUMERIC
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
-    });
+    },
+
+    //Sirve para ver el estado del producto (borrado logico)
+    status:{ 
+        type: Sequelize.BOOLEAN,
+        validate:{
+           defaultValue: true 
+        },
+    }
+    
+    
+
+});
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Products');

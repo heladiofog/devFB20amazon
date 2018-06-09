@@ -1,55 +1,61 @@
 
 
-module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.define('Product', {
+module.exports = (sequelize, Sequelize) => {
+    const Product = sequelize.define('Product', {
         shortName: {
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             allowNull: false
         },
         name: {
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             allowNull: false
         },
                 
         description:{
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             allowNull: false
         },
         
         unitPrice:{
-            type: DataTypes.DECIMAL(10,2),
+            type: Sequelize.DECIMAL(10,2),
             allowNull: false
         },
         
         itemSKU:{
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             allowNull: false
         },
 
         Stock:{
-            type: DataTypes.INTEGER,
+            type: Sequelize.INTEGER,
             allowNull: false
         },
 
         image:{
-            type: DataTypes.BLOB
+            type: Sequelize.BLOB
+        },
+
+        CategoryId:{
+            type: Sequelize.INTEGER
         },
 
         //Sirve para ver el estado del producto (borrado logico)
         status:{ 
-            type: DataTypes.BOOLEAN,
+            type: Sequelize.BOOLEAN,
             validate:{
                defaultValue: true 
             },
-             
-        
         }
         
+        
+
     })
 
+    Product.associate = function(models) {
+        // associations can be defined here
+        Product.belongsto(models.Category)
+    };
 
-
-
-
+    return Product;
 
 }
