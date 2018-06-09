@@ -2,7 +2,7 @@
   "development": {
     "username": "devfmaster",
     "password": "devfpassword",
-    "database": "devfdatabasename",
+    "database": "postgres",
     "host": "devfinstance.c6vwxiu244iw.us-east-2.rds.amazonaws.com",
     "dialect": "postgres",
     "operatorsAliases": false

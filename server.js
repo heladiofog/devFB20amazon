@@ -36,6 +36,20 @@ app.use('/api/v1', routers)
 app.listen(port, () => {
     console.log(`Server start at port ${port}`)
 
+    const Product = require("./models").User;
+    const Category = require("./models").Category;
+    User.create({
+        name: "Antonio Salazar", password: "holi2", email: "prueba@devf.com"
+    }).then(user => {
+        Category.create({
+            name: 'Mascotas',
+            descripcion: 'animales',
+            UserId: user.id
+        }).then(() => {
+            console.log("Bien");
+        });
+    });
+
     // db.sequelize.sync({
     //     force: true
     // })
