@@ -1,5 +1,5 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, Sequelize) => {
   var Address = sequelize.define('Address', {
     
     street: {
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: Sequelize.INTEGER
     },
-    idUser: {
+    UserId: {
       allowNull: false,
       type: Sequelize.INTEGER
     }
@@ -40,5 +40,6 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Address.belongsTo(models.User);
   };
+
   return Address;
 };
