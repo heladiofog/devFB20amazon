@@ -1,30 +1,32 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
-  var det_order = sequelize.define('det_order', {
-    order_id: {
-      type: DataTypes.UUID,
+module.exports = (sequelize, Sequelize) => {
+  var Det_Order = sequelize.define('Det_Order', {
+    OrderId: {
+      type: Sequelize.INTEGER,
       allowNull: false
     },
-    cart_id: {
-      type: DataTypes.UUID,
+    CartId: {
+      type: Sequelize.INTEGER,
       allowNull: false
     },
-    product_id: {
-      type: DataTypes.UUID,
+    ProductId: {
+      type: Sequelize.INTEGER,
       allowNull: false
     },
-    quantity: {
-      type: DataTypes.INTEGER,
+    Quantity: {
+      type: Sequelize.INTEGER,
       required: true
     },
-    unit_price: {
-      type: DataTypes.NUMERIC,
+    UnitPrice: {
+      type: Sequelize.NUMERIC,
       required: true
     }
   },
 );
-  det_order.associate = function(models) {
-  det_order.belongsTo(models.User);
+  Det_Order.associate = function(models) {
+  Det_Order.belongsTo(models.Cart);
+  Det_Order.belongsTo(models.Order);
+  Det_Order.hasMany(models.Product);
   };
-  return det_order;
+  return Det_Order;
 };

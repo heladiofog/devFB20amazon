@@ -9,29 +9,29 @@ module.exports = (sequelize, DataTypes) => {
                 notEmpty: true
             }
         },
-        nombre: {
+        name: {
             type: DataTypes.STRING,
             validate: {
                 notEmpty: true
             }
         },
-        
-        
+
+
         password:{
             type: DataTypes.STRING,
             validate: {
                 notEmpty: true
             }
         },
-        
-        genero:{
+
+        gender:{
             type: DataTypes.STRING,
             validate: {
                 allowNull: true
             }
         },
-        
-        fechaDeNacimiento:{
+
+        birdthDate:{
             type: DataTypes.STRING,
             validate:{
                 isDate: true,
@@ -39,29 +39,29 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         //Sirve para ver el estado del usuario (borrado logico)
-        // status:{ 
+        // status:{
         //     type: DataTypes.BOOLEAN,
         //     validate:{
         //         allowNull: false,
-        //         defaultValue: true 
-        //     } 
-            
+        //         defaultValue: true
+        //     }
+
         //}
-        
+
     })
-    
+
     //   genero:{}
-    
+
     User.beforeCreate((user)=>{
-        return crypt(user.password) 
+        return crypt(user.password)
         .then(success => {user.password = success})
         .catch(err => {
-            if (err) 
+            if (err)
             console.log(err)
         })
-        
+
     })
-    
+
     let crypt = (password) => {
         return new Promise ((resolve,reject)=>{
             bcrypt.genSalt(10,(err,salt)=>{
@@ -69,7 +69,7 @@ module.exports = (sequelize, DataTypes) => {
                 bcrypt.hash(password,salt,null,(err,hash) => {
                     if(err) reject(err)
                     resolve(hash)
-                    
+
                 });
             });
         });
@@ -79,6 +79,3 @@ module.exports = (sequelize, DataTypes) => {
     };
     return User;
 }
-
-
-
