@@ -42,26 +42,21 @@ app.listen(port, () => {
 
 //Tests from here 
 
-    const User = require("./models").User;
-    const Cart = require("./models").Cart;
-    User.create({
-        name: "Jul Cartenono", password: "julio", email: "julcartenono@gmail.com"
-    })  
-        .then(user => {
-        Cart.create({
-            status: true,
-            UserId: user.id
-        })
-            .then(() => {
-                console.log("Bien User y cart");
-            });
-
+    // const User = require("./models").User;
+    // const Cart = require("./models").Cart;
+    // User.create({
+    //     name: "Jul Cartenonono", password: "julio", email: "julcartenononoo@gmail.com"
+    // })  
+        // .then(user => {
         // Cart.create({
-        //     status: 1, UserId: 7 
-        // }) .then(() => {
-        //     console.log("Bien Cart");
-        // });        
-});
+        //     status: true,
+        //     UserId: user.id
+        // })
+        //     .then(() => {
+        //         console.log("Bien User y cart");
+        //     });
+       
+        // });
 
 
 

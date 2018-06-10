@@ -1,12 +1,9 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Cart = sequelize.define('Cart', {
-
     status:{ 
       allowNull: false,
-      type: DataTypes.INTEGER
-       
-      
+      type: DataTypes.BOOLEAN
         },
     createdAt: {
       allowNull: false,
@@ -26,7 +23,12 @@ module.exports = (sequelize, DataTypes) => {
     
   Cart.associate = function(models) {
     // associations can be defined here
-    Cart.belongsTo(models.User);
+
+    Cart.belongsTo(models.User, 
+      {
+        through: 'UserCart'
+    });
+
     //Cart.hasMany(models.det_order);
     //Cart.hasMany(models.AddressId);
   };

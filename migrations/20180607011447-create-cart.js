@@ -10,11 +10,11 @@ module.exports = {
       },
 
       status:{ 
-        allowNull: false,
-        type: DataTypes.BOOLEAN
-       
-      },
-          
+        type: DataTypes.BOOLEAN,
+        validate:{
+          defaultValue: true 
+        },
+      },  
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE
