@@ -1,15 +1,15 @@
 'use strict';
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: (queryInterface, DataTypes) => {
     return queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
       },
       email: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         unique: true,
         validate:{
             isEmail: true,
@@ -17,26 +17,26 @@ module.exports = {
         allowNull: false
       },
       name: {
-          type: Sequelize.STRING,
+          type: DataTypes.STRING,
           allowNull: false
       },
       
       
       password:{
-          type: Sequelize.STRING,
+          type: DataTypes.STRING,
           allowNull: false
       },
       
       gender:{
-          type: Sequelize.STRING
+          type: DataTypes.STRING
       },
       
       birthDate:{
-          type: Sequelize.DATE
+          type: DataTypes.DATE
       },
       //Sirve para ver el estado del usuario (borrado logico)
       status:{ 
-          type: Sequelize.BOOLEAN,
+          type: DataTypes.BOOLEAN,
           validate:{
             defaultValue: true 
           },
@@ -45,15 +45,15 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       }
     });
   },
-  down: (queryInterface, Sequelize) => {
+  down: (queryInterface, DataTypes) => {
     return queryInterface.dropTable('Users');
   }
 };

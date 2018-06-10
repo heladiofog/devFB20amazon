@@ -1,36 +1,36 @@
 'use strict';
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: (queryInterface, DataTypes) => {
     return queryInterface.createTable('Carts', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
       },
 
       status:{ 
         allowNull: false,
-        type: Sequelize.BOOLEAN
+        type: DataTypes.BOOLEAN
        
       },
           
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
       
       UserId:{ 
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
        },
     });
   },
-  down: (queryInterface, Sequelize) => {
+  down: (queryInterface, DataTypes) => {
     return queryInterface.dropTable('Carts');
   }
 };

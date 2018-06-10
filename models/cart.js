@@ -3,13 +3,11 @@ module.exports = (sequelize, DataTypes) => {
   const Cart = sequelize.define('Cart', {
 
     status:{ 
-      type: DataTypes.INTEGER,
-      validate:{
-         defaultValue: true 
+      allowNull: false,
+      type: DataTypes.INTEGER
+       
       
-        }},
-        //Address
-        //paymentmethod
+        },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE

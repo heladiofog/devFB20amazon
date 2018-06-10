@@ -1,6 +1,10 @@
 import bcrypt from 'bcrypt-nodejs'
+import {Cart} from './cart.js'
+
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
+
+        
         email: {
             type: DataTypes.STRING,
             unique: true,
@@ -64,7 +68,14 @@ module.exports = (sequelize, DataTypes) => {
         });
     }
     User.associate = function(models) {
+
+        User.belongsToMany(models.Category, 
+            {
+              through: 'ProductCategory'
+          });
+
         // associations can be defined here
+       
     };
     return User;
 }
