@@ -1,5 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     const Category = sequelize.define("Category", {
+        
         name: {
             type: DataTypes.STRING,
             unique: true,
@@ -12,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     Category.associate = function(models){
-
+        Category.hasMany(models.Product)
     };
     
     return Category;

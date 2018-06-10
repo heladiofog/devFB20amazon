@@ -32,7 +32,7 @@ module.exports = (sequelize, Sequelize) => {
         },
 
         image:{
-            type: Sequelize.BLOB
+            type: Sequelize.STRING
         },
 
         CategoryId:{
@@ -53,7 +53,9 @@ module.exports = (sequelize, Sequelize) => {
 
     Product.associate = function(models) {
         // associations can be defined here
-        Product.belongsto(models.Category)
+        Product.belongstoMany(models.Category)
+        // Product.belongsto(models.det_order),
+        // Product.hasMany(models.Cart)
     };
 
     return Product;

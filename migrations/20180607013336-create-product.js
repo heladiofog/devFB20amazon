@@ -2,7 +2,14 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Product', {
-      shortName: {
+        id: {
+            type: Sequelize.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4,
+            allowNull: false,
+            autoIncrement: false,
+          },
+    shortName: {
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -32,7 +39,7 @@ module.exports = {
     },
 
     image:{
-        type: Sequelize.BLOB
+        type: Sequelize.STRING
     },
 
     CategoryId:{
@@ -52,6 +59,6 @@ module.exports = {
 });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Products');
+    return queryInterface.dropTable('Product');
   }
 };
