@@ -1,4 +1,4 @@
-import {createCategoryMan} from '../managers/managerCategory'
+import { createCategoryMan } from "../managers/managerCategory"
 
 
 const createCategory = (req, res) => {
