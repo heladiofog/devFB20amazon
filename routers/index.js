@@ -38,6 +38,55 @@ const router = express.Router();
  //Este test prueba la función verifyToken, si es correcto, entra la función testApi
 router.get('/test', verifyToken, testApi);
 router.post('/login',  authlogin);
+
+/**
+ * @swagger
+ * /users:
+ *  post:
+ *      tags: 
+ *          - name: USERS
+ *      description: Realiza el registro de un usuario nuevo
+ *      produces:
+ *          - application/json
+ *      parameters:
+ *          - name: body
+ *            in: body
+ *            required: true
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  email:
+ *                      type: string
+ *                      required: true
+ *                      example: prueba@devf.com
+ *                  password:
+ *                      type: string
+ *                      required: true
+ *                      example: pass18*
+ *                  name:
+ *                      type: string
+ *                      required: true
+ *                      example: Antonio Salazar
+ *      responses:
+ *          201:
+ *             description: devuelve un objeto json con los datos del usuario 
+ *             schema:
+ *             type: object
+ *             properties:
+ *                  email:
+ *                      example: prueba@devf.com
+ *                  password:
+ *                      example: pass18*
+ *                  name:
+ *                      example: Antonio Salazar
+ *          501:
+ *             description: No se pudo crear la cuenta del usuario
+ *             schema:
+ *             type: object
+ *             properties:   
+ *                 message: 
+ *                     example: error on create
+ */
 router.post('/users', createUser);
 router.patch('/users', verifyToken, patchUser)
 router.delete('/users', deleteUser)

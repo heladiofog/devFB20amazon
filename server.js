@@ -8,7 +8,7 @@ import db from './models';
 
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
 
 app.use(parser.urlencoded({extended : true}))
 app.use(parser.json())
@@ -36,28 +36,28 @@ app.use('/api/v1', routers)
 app.listen(port, () => {
     console.log(`Server start at port ${port}`)
 
-    const Category = require("./models").Category;
-    const Product = require("./models").Product;
-    Category.create({
-        name: "Mascotas", description: "Animales"
-    })
-    .then(category => {
-        Product.create({
-            shortName: "correa",
-            name: "correa para perro",
-            description: "lazo que se le amarra al perro",
-            unitPrice: 15.50,
-            itemSKU: "2345243",
-            Stock: 23,
-            CategoryId: 1
-       })
+    // const Category = require("./models").Category;
+    // const Product = require("./models").Product;
+    // Category.create({
+    //     name: "Automoviles", description: "Transporte"
+    // })
+    // .then(category => {
+    //     Product.create({
+    //         shortName: "correa",
+    //         name: "correa para perro",
+    //         description: "lazo que se le amarra al perro",
+    //         unitPrice: 15.50,
+    //         itemSKU: "2345243",
+    //         Stock: 23,
+    //         CategoryId: 1
+    //    })
 
-        .then(() => {
-            console.log("Bien");
-        });
+    //     .then(() => {
+    //         console.log("Bien");
+    //     });
     
-});
+//});
     // db.sequelize.sync({
     //     force: true
     // })
-});
+})

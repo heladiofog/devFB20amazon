@@ -1,47 +1,47 @@
 
 
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const Product = sequelize.define('Product', {
         shortName: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         name: {
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
                 
         description:{
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
         
         unitPrice:{
-            type: Sequelize.DECIMAL(10,2),
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false
         },
         
         itemSKU:{
-            type: Sequelize.STRING,
+            type: DataTypes.STRING,
             allowNull: false
         },
 
         Stock:{
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
 
         image:{
-            type: Sequelize.STRING
+            type: DataTypes.STRING
         },
 
         CategoryId:{
-            type: Sequelize.INTEGER
+            type: DataTypes.INTEGER
         },
 
         //Sirve para ver el estado del producto (borrado logico)
         status:{ 
-            type: Sequelize.BOOLEAN,
+            type: DataTypes.BOOLEAN,
             validate:{
                defaultValue: true 
             },
