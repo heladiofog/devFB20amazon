@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     Category.associate = function(models){
-        Category.belongsToMany(models.Product);
+        // Category.belongsToMany(models.Product);
     };
     
     return Category;

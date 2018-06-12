@@ -33,30 +33,9 @@ const swaggerSpec = swaggerJSDoc(options)
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 app.use('/api/v1', routers)
+
 app.listen(port, () => {
-    console.log(`Server start at port ${port}`)
-
-    // const Category = require("./models").Category;
-    // const Product = require("./models").Product;
-    // Category.create({
-    //     name: "Automoviles", description: "Transporte"
-    // })
-    // .then(category => {
-    //     Product.create({
-    //         shortName: "correa",
-    //         name: "correa para perro",
-    //         description: "lazo que se le amarra al perro",
-    //         unitPrice: 15.50,
-    //         itemSKU: "2345243",
-    //         Stock: 23,
-    //         CategoryId: 1
-    //    })
-
-    //     .then(() => {
-    //         console.log("Bien");
-    //     });
-    
-//});
+    console.log(`Server start at port ${port}`);
     // db.sequelize.sync({
     //     force: true
     // })
