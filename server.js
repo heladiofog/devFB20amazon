@@ -47,16 +47,16 @@ app.listen(port, () => {
     // User.create({
     //     name: "Jul Cartenonono", password: "julio", email: "julcartenononoo@gmail.com"
     // })  
-        // .then(user => {
-        // Cart.create({
-        //     status: true,
-        //     UserId: user.id
-        // })
-        //     .then(() => {
-        //         console.log("Bien User y cart");
-        //     });
+    //     .then(user => {
+    //     Cart.create({
+    //         status: true,
+    //         UserId: user.id
+    //     })
+    //         .then(() => {
+    //             console.log("Bien User y cart");
+    //         });
        
-        // });
+    //     });
 
 
 

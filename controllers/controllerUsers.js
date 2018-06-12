@@ -18,6 +18,7 @@ const createUser = (req, res) => {
     })
 }
 
+//PATCH USER
 const patchUser = (req, res) =>{
     patchUserMan(req)
         .then((user) =>{
