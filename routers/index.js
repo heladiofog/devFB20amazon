@@ -1,42 +1,55 @@
 import express from 'express';
-import {testApi} from '../controllers';
+import { testApi } from '../controllers';
 
 //Added from s1-002
-import {authlogin} from '../controllers/auth';
-import {createUser, patchUser, getById, deleteUser} from '../controllers/controllerUsers';
-import {verifyToken} from '../middlewares/midelware'
+import { authlogin } from '../controllers/auth';
+import { createUser, patchUser, getById, deleteUser } from '../controllers/controllerUsers';
+import { verifyToken } from '../middlewares/midelware'
 
 const router = express.Router();
 
-//Prueba 
+router.get('/test', verifyToken, testApi);
+
+router.post('/login', authlogin);
+
 /**
  * @swagger
- * /test:
- *   get: 
- *     description: show server running
- *     produces:
- *       - application/json
- *     parameters:
- *       - name: email
- *         description: user email
- *         in: body
- *         required: true
- *         type: string
- *       - name: password
- *         description: password
- *         in: body
- *         required: true
- *         type: string
- *     responses:
- *       200:
- *         description: Ok
- *       400:
- *         description: Bad request
+ * /login:
+ *  post:
+ *      tags:
+ *          - name: USERS
+ *      description: Realiza login y devuelve token
+ *      produces: 
+ *          - application/json
+ *      parameters:
+ *          - name: body
+ *            in: body
+ *            required: true
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  email:
+ *                      type: string
+ *                      required: true
+ *                      example: prueba@mail.com
+ *                  password:
+ *                      type: string
+ *                      required: true
+ *                      example: pass18*
+ *      responses:
+ *          200:
+ *              description: usuario logeado
+ *              properties:
+ *                  - name: token 
+ *                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjozfSwiaWF0IjoxNTI3MDMzMjQ4fQ.eCNBA8nkOn3QTe-TJBubRs_BzheLIzPCXYFwR8a86-Y
+ * 
+ * 
+ *              
+ *          400:
+ *              description: datos invalidos
+ *        
  */
 
- //Este test prueba la función verifyToken, si es correcto, entra la función testApi
-router.get('/test', verifyToken, testApi);
-router.post('/login',  authlogin);
 router.post('/users', createUser);
 router.patch('/users', verifyToken, patchUser)
 router.delete('/users', deleteUser)
@@ -44,5 +57,4 @@ router.delete('/users', deleteUser)
 // router.get('/users', getById)
 
 
-export default router
-
+export default router;

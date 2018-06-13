@@ -1,14 +1,18 @@
 import bcrypt from 'bcrypt-nodejs'
-import {Cart} from './cart.js'
+import { Cart } from './cart.js'
 
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
-
-        
+        // id: {
+        //     allowNull: false,
+        //     autoIncrement: true,
+        //     primaryKey: true,
+        //     type: DataTypes.INTEGER
+        // },
         email: {
             type: DataTypes.STRING,
             unique: true,
-            validate:{
+            validate: {
                 isEmail: true,
             },
             allowNull: false
@@ -17,52 +21,52 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        
-        
-        password:{
+
+
+        password: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        
-        gender:{
+
+        gender: {
             type: DataTypes.STRING,
             allowNull: true
         },
-        
-        birthDate:{
+
+        birthDate: {
             type: DataTypes.DATE,
             allowNull: true
         },
         //Sirve para ver el estado del usuario (borrado logico)
-        status:{ 
+        status: {
             type: DataTypes.BOOLEAN,
-            validate:{
-               defaultValue: true 
-            } 
-        }
-        
+            // validate: {
+            //     defaultValue: true
+            // }
+        },
+
     })
-    
+
     //   genero:{}
-    
-    User.beforeCreate((user)=>{
-        return crypt(user.password) 
-        .then(success => {user.password = success})
-        .catch(err => {
-            if (err) 
-            console.log(err)
-        })
-        
+
+    User.beforeCreate((user) => {
+        return crypt(user.password)
+            .then(success => { user.password = success })
+            .catch(err => {
+                if (err)
+                    console.log(err)
+            })
+
     })
-    
+
     let crypt = (password) => {
-        return new Promise ((resolve,reject)=>{
-            bcrypt.genSalt(10,(err,salt)=>{
-                if(err) reject(err)
-                bcrypt.hash(password,salt,null,(err,hash) => {
-                    if(err) reject(err)
+        return new Promise((resolve, reject) => {
+            bcrypt.genSalt(10, (err, salt) => {
+                if (err) reject(err)
+                bcrypt.hash(password, salt, null, (err, hash) => {
+                    if (err) reject(err)
                     resolve(hash)
-                    
+
                 });
             });
         });
@@ -70,16 +74,14 @@ module.exports = (sequelize, DataTypes) => {
     User.associate = function(models) {
 
 
-          User.belongsToMany(models.Cart, 
-            {
-              through: 'UserCart'
-          });
+        User.belongsToMany(models.Cart, {
+            through: 'UserCart'
+        });
+
+        User.belongsTo(models.Order)
 
         // associations can be defined here
-       
+
     };
     return User;
 }
-
-
-

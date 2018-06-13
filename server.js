@@ -10,7 +10,7 @@ import db from './models';
 const app = express()
 const port = process.env.PORT || 3000
 
-app.use(parser.urlencoded({extended : true}))
+app.use(parser.urlencoded({ extended: true }))
 app.use(parser.json())
 app.use(cors())
 
@@ -40,23 +40,31 @@ app.listen(port, () => {
     //     force: true
     // })
 
-//Tests from here 
+    //Tests from here 
 
-    // const User = require("./models").User;
-    // const Cart = require("./models").Cart;
-    // User.create({
-    //     name: "Jul Cartenonono", password: "julio", email: "julcartenononoo@gmail.com"
-    // })  
-        // .then(user => {
-        // Cart.create({
-        //     status: true,
-        //     UserId: user.id
-        // })
-        //     .then(() => {
-        //         console.log("Bien User y cart");
-        //     });
-       
-        // });
+
+    const User = require("./models").User;
+    const Cart = require("./models").Cart;
+    const Order = require("./models").Order;
+    User.create({
+            name: "Raul Armas12222871",
+            password: "holi",
+            email: "raularmassantiago2228271@gmail.com",
+            gender: "Masculino"
+        })
+        .then(user => {
+            Order.create({
+                    name: ' producto',
+                    idUser: user.id
+                })
+                .then(() => {
+                    console.log("Se creo un usuario y su orden");
+                })
+                .catch(err => {
+                    console.log(err)
+                });
+
+        }).catch(err => { console.log(err); });
 
 
 

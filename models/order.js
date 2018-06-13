@@ -60,54 +60,56 @@
 
 
 
-//const User = require('../models/user.js')
-
-
 module.exports = (sequelize, DataTypes) => {
     const Order = sequelize.define("Order", {
-        idOrder: {
-            allowNull: false,
-            autoIncrement: true,
-            primaryKey: true,
-            type: DataTypes.INTEGER
-        },
+        // idOrder: {
+        //     allowNull: false,
+        //     autoIncrement: true,
+        //     primaryKey: true,
+        //     type: DataTypes.INTEGER
+        // },
         name: {
             type: DataTypes.STRING,
-            unique: true,
-            allowNull: false
+            allowNull: true
         },
 
         status: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING //,
+                //allowNull: false
         },
         address: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING //,
+                //allowNull: false
         },
 
 
         paymethod: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING //,
+                //allowNull: false
         },
 
         totalPrice: {
-            type: DataTypes.DECIMAL(10, 2),
-            allowNull: false
+            type: DataTypes.DECIMAL(10, 2) //,
+                //allowNull: false
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING //,
+                //allowNull: false
+        },
+        idUser: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
+
     })
 
+
     Order.associate = function(models) {
-        //Order.belongsTo(User)
-        //Order.hasMany(detOrder)
+        //
+        Order.hasMany(models.Order)
 
 
     };
 
     return Order;
-};
+}

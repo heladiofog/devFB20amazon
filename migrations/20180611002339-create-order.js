@@ -2,7 +2,7 @@
 module.exports = {
     up: (queryInterface, DataTypes) => {
         return queryInterface.createTable('Orders', {
-            idOrder: {
+            id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
@@ -10,37 +10,56 @@ module.exports = {
             },
             name: {
                 type: DataTypes.STRING,
-                unique: true,
-                allowNull: false
+                allowNull: true
             },
 
             status: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: true
             },
             address: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: true
             },
-
-
             paymethod: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: true
             },
 
             totalPrice: {
                 type: DataTypes.DECIMAL(10, 2),
-                allowNull: false
+                allowNull: true
             },
             description: {
                 type: DataTypes.STRING,
+                allowNull: true
+            },
+
+            idUser: {
+                type: DataTypes.INTEGER,
                 allowNull: false
             },
+            createdAt: {
+                allowNull: false,
+                type: DataTypes.DATE
+            },
+            updatedAt: {
+                allowNull: false,
+                type: DataTypes.DATE
+            }
+
+            //         createdAt: {
+            //     allowNull: false,
+            //     type: Sequelize.DATE
+            // },
+            // updatedAt: {
+            //     allowNull: false,
+            //     type: Sequelize.DATE
+            // }
 
         });
     },
     down: (queryInterface, DataTypes) => {
-        return queryInterface.dropTable('orders');
+        return queryInterface.dropTable('Orders');
     }
 };
