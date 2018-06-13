@@ -1,9 +1,13 @@
+import db from '../models';
+
+const Category = db.Category
+
 import { createCategoryMan } from "../managers/managerCategory"
 
-
+//Create new Category
 const createCategory = (req, res) => {
     let data = req.body
-    createIdMan(data)
+    createCategoryMan(data)
         .then( (category) => {
             if(category){
                 res.status(201).json(category)
@@ -17,6 +21,15 @@ const createCategory = (req, res) => {
         })
 }
 
+const getCategory = (req, res) => {
+        console.log(req.body)
+        Category.findAll().then(category =>{
+            res.send(category)
+        }).catch(err =>{
+            res.status(404).send(err)
+        })
+}
 export{
-    createCategory
+    createCategory,
+    getCategory
 }

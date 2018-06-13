@@ -1,7 +1,4 @@
-import db from '../models';
-import {createCategory} from '../controllers/controllerCategory'
 
-const Category = db.Category
 
 const createCategoryMan = (categoryData) => {
     return new Promise ( (resolve, reject) =>{
@@ -16,6 +13,18 @@ const createCategoryMan = (categoryData) => {
     })
 }
 
+const getCategory = (Category) => {
+    return new Promise ( (resolve, reject) => {
+        console.log(Category)
+        Category.find(Category).then(user =>{
+            resolve(category)
+        }).catch(err =>{
+            reject(err)
+        })
+    })
+}
+
 export{
-    createCategoryMan
+    createCategoryMan,
+    getCategory
 }

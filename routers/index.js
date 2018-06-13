@@ -6,7 +6,8 @@ import {testApi} from '../controllers';
 import {authlogin} from '../controllers/auth';
 import {createUser, patchUser, getById, deleteUser} from '../controllers/controllerUsers';
 import {verifyToken} from '../middlewares/midelware'
-
+import {createCategory, getCategory} from '../controllers/controllerCategory';
+import { create } from 'domain';
 const router = express.Router();
 
 //Prueba 
@@ -89,8 +90,9 @@ router.post('/login',  authlogin);
  */
 router.post('/users', createUser);
 router.patch('/users', verifyToken, patchUser)
-router.delete('/users', deleteUser)
-
+router.delete('/users', deleteUser);
+router.post('/categories', createCategory);
+router.get('/categories', getCategory)
 // router.get('/users', getById)
 
 
