@@ -91,6 +91,49 @@ router.post('/login',  authlogin);
 router.post('/users', createUser);
 router.patch('/users', verifyToken, patchUser)
 router.delete('/users', deleteUser);
+
+/**
+ * @swagger
+ * /categories:
+ *  post:
+ *     tags:
+ *         - name: CATEGORIES
+ *     description: Crear Categorias de Productos
+ *     produces:
+ *         - application/json
+ *     parameters:
+ *         - name: body
+ *           in: body
+ *           required: true
+ *           schema:
+ *             type: object
+ *             properties:
+ *                 name: 
+ *                    type: string
+ *                    required: true
+ *                    example: Electronicos
+ *                 description:
+ *                    type: string
+ *                    required: true
+ *                    example: Videojuevos, celulares
+ *     responses:
+ *         201:
+ *            description: devuelve un objeto json con el nombre de la categoria y la descripcion de la misma
+ *            schema:
+ *            type: object
+ *            properties:
+ *                 name:
+ *                    example: Videojuegos
+ *                 description:
+ *                    example: Juegos de video de las consolas XBOX ONE, Play Station 4, Nintento Switch
+ *         501:
+ *            description: No se pudo crear la Categoria
+ *            schema:
+ *            type: object
+ *            properties:
+ *                message:
+ *                     example: error on create        
+ */
 router.post('/categories', createCategory);
 router.get('/categories', getCategory)
 // router.get('/users', getById)
