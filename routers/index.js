@@ -4,7 +4,9 @@ import {testApi} from '../controllers';
 //Added from s1-002
 import {authlogin} from '../controllers/auth';
 import {createUser, patchUser, getById, deleteUser} from '../controllers/controllerUsers';
+import {createCart, patchCart, getCartById, getCartByUserId, deleteCart} from '../controllers/cart';
 import {verifyToken} from '../middlewares/midelware'
+import {verifyCart} from '../middlewares/cartVerify'
 
 const router = express.Router();
 
@@ -129,6 +131,14 @@ router.patch('/users', verifyToken, patchUser)
 router.delete('/users', verifyToken, deleteUser)
 
 // router.get('/users', getById)
+
+router.post('/cart', verifyToken, verifyCart, createCart);
+
+router.get('/cart', verifyToken, verifyCart, getCartByUserId)
+
+router.patch('/cart', verifyToken, verifyCart, patchCart);
+
+router.delete('/cart', verifyToken, verifyCart, deleteCart)
 
 
 export default router

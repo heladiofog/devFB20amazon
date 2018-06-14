@@ -17,27 +17,26 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
      },
-
+     AddressId:{ 
+      allowNull: true,
+      type: DataTypes.INTEGER,
+     },
+     paymentMethod:{ 
+      allowNull: true,
+      type: DataTypes.STRING,
+     },
+     OrderId:{ 
+      allowNull: true,
+      type: DataTypes.INTEGER,
+     },
   }, {});
   
     
   Cart.associate = function(models) {
     // associations can be defined here
-
     Cart.belongsTo(models.User);
+    Cart.hasMany(models.Det_Order);
 
-    // Cart.belongsTo(models.Product, 
-    //   {
-    //     through: 'ProductCart'
-    // });
-
-        // Cart.hasMany(models.det_order, 
-    //   {
-    //     through: 'CartDet_order'
-    // });
-
-    //Cart.hasMany(models.det_order);
-    //Cart.hasMany(models.AddressId);
   };
   return Cart;
 };

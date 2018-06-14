@@ -8,12 +8,9 @@ module.exports = {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-
       status:{ 
-        type: DataTypes.BOOLEAN,
-        validate:{
-          defaultValue: true 
-        },
+        allowNull: false,
+        type: DataTypes.BOOLEAN
       },  
       createdAt: {
         allowNull: false,
@@ -23,9 +20,20 @@ module.exports = {
         allowNull: false,
         type: DataTypes.DATE
       },
-      
       UserId:{ 
         allowNull: false,
+        type: DataTypes.INTEGER,
+       },
+       AddressId:{ 
+        allowNull: true,
+        type: DataTypes.INTEGER,
+       },
+       paymentMethod:{ 
+        allowNull: true,
+        type: DataTypes.STRING,
+       },
+       OrderId:{ 
+        allowNull: true,
         type: DataTypes.INTEGER,
        },
     });
