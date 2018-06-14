@@ -25,17 +25,20 @@ module.exports = {
     
     unitPrice:{
         type: Sequelize.DECIMAL(10,2),
-        allowNull: false
+        allowNull: false,
+        required: true
     },
     
     itemSKU:{
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        required: true
     },
 
-    Stock:{
+    stock:{
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        required: true
     },
 
     image:{
