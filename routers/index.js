@@ -6,7 +6,7 @@ import {testApi} from '../controllers';
 import {authlogin} from '../controllers/auth';
 import {createUser, patchUser, getById, deleteUser} from '../controllers/controllerUsers';
 import {verifyToken} from '../middlewares/midelware'
-import {createCategory, getCategory} from '../controllers/controllerCategory';
+import {createCategory, getCategory, getProductByCategory} from '../controllers/controllerCategory';
 import { create } from 'domain';
 const router = express.Router();
 
@@ -136,7 +136,7 @@ router.delete('/users', deleteUser);
  */
 router.post('/categories', createCategory);
 router.get('/categories', getCategory)
-// router.get('/users', getById)
+router.get('/category/:uid', getProductByCategory)
 
 
 export default router

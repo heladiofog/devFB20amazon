@@ -2,7 +2,7 @@ import db from '../models';
 
 const Category = db.Category
 
-import { createCategoryMan } from "../managers/managerCategory"
+import { createCategoryMan, getCategoryMan } from "../managers/managerCategory"
 
 //Create new Category
 const createCategory = (req, res) => {
@@ -29,7 +29,20 @@ const getCategory = (req, res) => {
             res.status(404).send(err)
         })
 }
+
+const getProductByCategory = (req, res) =>{
+    console.log(req.body)
+    const {uid} = req.params
+        //console.log(uid)
+        Category.findById(uid).then( user =>{
+            res.send(user)
+        }).catch(err => {
+            res.status(404).send(err)
+        })
+}
+
 export{
     createCategory,
-    getCategory
+    getCategory,
+    getProductByCategory
 }

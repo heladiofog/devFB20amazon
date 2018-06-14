@@ -13,7 +13,7 @@ const createCategoryMan = (categoryData) => {
     })
 }
 
-const getCategory = (Category) => {
+const getCategoryMan = (Category) => {
     return new Promise ( (resolve, reject) => {
         console.log(Category)
         Category.find(Category).then(user =>{
@@ -26,5 +26,5 @@ const getCategory = (Category) => {
 
 export{
     createCategoryMan,
-    getCategory
+    getCategoryMan
 }
