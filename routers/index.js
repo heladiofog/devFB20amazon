@@ -36,7 +36,7 @@ const router = express.Router();
  */
 
  //Este test prueba la función verifyToken, si es correcto, entra la función testApi
-router.get('/test', verifyToken, testApi);
+router.get('/test', testApi);
 router.post('/login',  authlogin);
 router.post('/users', createUser);
 router.patch('/users', verifyToken, patchUser)

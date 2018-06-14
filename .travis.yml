@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- 8.11.2
+deploy:
+  provider: heroku
+  api_key:
+    secure: ee101639-0e6b-4976-8b01-0b3073ae6cfa
+  app: amazonb20
+  on:
+    repo: heladiofog/devFB20amazon
+    branch: development
+script:
+  - "npm run server"
