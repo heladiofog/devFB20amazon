@@ -1,6 +1,6 @@
 
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, Sequelize) => {
     const Product = sequelize.define('Product', {
         shortName: {
             type: Sequelize.STRING,
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         },
                 
         description:{
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             allowNull: false
         },
         
@@ -42,12 +42,12 @@ module.exports = (sequelize, DataTypes) => {
         },
 
         CategoryId:{
-            type: DataTypes.INTEGER
+            type: Sequelize.INTEGER
         },
 
         //Sirve para ver el estado del producto (borrado logico)
         status:{ 
-            type: DataTypes.BOOLEAN,
+            type: Sequelize.BOOLEAN,
             validate:{
                defaultValue: true 
             },
@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Product.associate = function(models) {
         // associations can be defined here
-        Product.belongstoMany(models.Category)
+        Product.belongsTo(models.Category)
         // Product.belongsto(models.det_order),
         // Product.hasMany(models.Cart)
     };

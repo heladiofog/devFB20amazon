@@ -13,10 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.NUMERIC
   }, {});
   Product.associate = function(models) {
-    Product.belongsToMany(models.Category, 
-      {
-        through: 'ProductCategory'
-    });
+    //Product(models.Category);
   };
   return Product;
 };

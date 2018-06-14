@@ -4,7 +4,7 @@ import {testApi} from '../controllers';
 
 //Added from s1-002
 import {authlogin} from '../controllers/auth';
-import {createUser, patchUser, getById, deleteUser} from '../controllers/controllerUsers';
+import {createUser, patchUser, deleteUser} from '../controllers/controllerUsers';
 import {verifyToken} from '../middlewares/midelware'
 import {createProduct, getProducts, getById, getByCategoryId} from '../controllers/controllerProduct';
 
@@ -111,7 +111,7 @@ router.delete('/users', deleteUser)
  *            schema:
  *              type: object
  *              properties:
-                    shortName:
+ *                  shortName: 
  *                      type: string
  *                      required: true
  *                      example: correa
@@ -187,46 +187,7 @@ router.delete('/users', deleteUser)
  *      description: Obtiene todos los productos
  *      produces:
  *          application/jason
- *      parameters:
- *          - name: body
- *            in: body
- *            required: true
- *            schema:
- *              type: object
- *              properties:
-                    shortName:
- *                      type: string
- *                      required: true
- *                      example: correa
- *                  name:
- *                      type: string
- *                      required: true
- *                      example: correa para perro 
- *                  description:
- *                      type: string
- *                      required: true
- *                      example: correa para perro 1 metro de largo, cordon uso rudo, collar cuero
- *                  unitPrice:
- *                      type: decimal
- *                      required: true
- *                      example: 200.75
- *                  itemSKU:
- *                      type: string
- *                      required: true
- *                      example: CORR2007520180531
- *                  stock:
- *                      type: integer
- *                      required: true
- *                      example: 350
- *                  image: 
- *                      type: string
- *                      example: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRulF2j7aYSEFgndoOCS7OAXF4HDQj5iVDd937cdmdkakEPnrSA
- *                  CategoryId:
- *                      type: integer
- *                      example: 20128134567234FXDQ01239
- *                  status:
- *                      type: boolean
- *                      example: true
+ 
  *      responses:
  *          product:
  *              description: devuelve un objeto jason con los datos del producto

@@ -1,18 +1,18 @@
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, Sequelize) => {
     const Category = sequelize.define("Category", {
         name: {
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             unique: true,
             allowNull: false
         },
         description:{
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             allowNull: false
         }
     })
 
     Category.associate = function(models){
-
+            Category.hasMany(models.Product)
     };
     
     return Category;
