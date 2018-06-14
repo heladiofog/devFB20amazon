@@ -40,3 +40,5 @@ app.listen(port, () => {
     //     force: true
     // })
 });
+
+export default app;
