@@ -143,7 +143,6 @@ const getByIdMan = (idproduct) => {
 export{
     createProductMan,
     getProductsMan,
-    getByCategoryIdMan,
     getByIdMan,
     topTenMan
 }

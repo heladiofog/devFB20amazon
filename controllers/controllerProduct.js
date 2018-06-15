@@ -1,6 +1,7 @@
+import db from '../models';
 
-import {createProductMan, getProductsMan, topTenMan, getByCategoryIdMan, ggetByIdMan} from '../managers/managerProduct'
-
+import {createProductMan, getProductsMan, topTenMan} from '../managers/managerProduct'
+const Product = db.Product
 
 //CREATE new product - CREATE
 const createProduct = (req, res) => {
@@ -72,7 +73,6 @@ const getTopten = (req, res) => {
 //READ product by Id [Detalle de Producto]- Get 
 
 const getById = (req, res) => {
-    console.log(req.body)
     const {uid} = req.params
         console.log(uid)
     Product.findById(uid).then(product => {
@@ -83,28 +83,11 @@ const getById = (req, res) => {
 }
 
 
-//READ product by CategoryId - Get 
-
-const getByCategoryId = (req, res) => {
-    console.log(req.body)
-    const {CategoryId} = req.params
-        console.log(CategoryId)
-    Product.findById(CategoryId).then(product => {
-        res.send(product)
-    }).catch(err =>{
-        res.status(404).send(err)
-    })
-}
-
-
-
-
 
 export{
     createProduct,
     getProducts,
     getById,
-    getByCategoryId,
     getTopten
 }
 

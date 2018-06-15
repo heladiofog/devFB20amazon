@@ -8,7 +8,7 @@ import {createUser, patchUser, deleteUser} from '../controllers/controllerUsers'
 import {verifyToken} from '../middlewares/midelware'
 import {createCategory, getCategory, getProductByCategory} from '../controllers/controllerCategory';
 import { create } from 'domain';
-import {createProduct, getProducts, getById, getByCategoryId,getTopten} from '../controllers/controllerProduct';
+import {createProduct, getProducts, getById,getTopten} from '../controllers/controllerProduct';
 
 const router = express.Router();
 
@@ -270,8 +270,7 @@ router.get('/category/:uid', getProductByCategory)
 
 router.post('/products', createProduct);
 router.get('/products', getProducts);
-router.get('/products', getById);
-router.get('/products', getByCategoryId)
+router.get('/product/:uid', getById);
 router.get('/topten', getTopten)
 
 
