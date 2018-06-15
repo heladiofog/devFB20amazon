@@ -11,4 +11,4 @@ deploy:
     repo: heladiofog/devFB20amazon
     branch: development
 script:
-  - "npm run server"
+  - "npm run start"
