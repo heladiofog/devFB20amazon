@@ -31,16 +31,11 @@ const createProductMan = (productData) => {
 
 const getProductsMan = (productData) => {
     return new Promise ((resolve, reject) =>{
-        Product.get({
-            shortName: req.shortName,
-            name: req.name,
-            description: req.description,
-            unitPrice: req.unitPrice,
-            itemSKU: req.itemSKU,
-            stock: req.stock,
-            image: req.image,
-            CategoryId: req.CategoryId,
-            status: req.status
+        Product.findAll({
+            attributes:['shortName','description','image'],
+            where:{
+                status: true
+            }
         }).then(product => {
             resolve(product)
         }).catch(err =>{    
@@ -49,6 +44,24 @@ const getProductsMan = (productData) => {
     })
     
  }
+
+
+ const topTenMan = (productData) => {
+    return new Promise ((resolve, reject) =>{
+        Product.findAll({
+            attributes:['shortName','description','image'],
+            where:{
+                status: true,
+                CategoryId: 14
+            }
+        }).then(product => {
+            resolve(product)
+        }).catch(err =>{    
+            reject(err)
+        }) 
+    })
+    
+ } 
 
 
  //READ product by CategoryId - Get 
@@ -131,7 +144,8 @@ export{
     createProductMan,
     getProductsMan,
     getByCategoryIdMan,
-    getByIdMan
+    getByIdMan,
+    topTenMan
 }
 
 

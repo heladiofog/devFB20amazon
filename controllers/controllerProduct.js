@@ -1,5 +1,5 @@
 
-import {createProductMan, getProductsMan, getByCategoryIdMan, ggetByIdMan} from '../managers/managerProduct'
+import {createProductMan, getProductsMan, topTenMan, getByCategoryIdMan, ggetByIdMan} from '../managers/managerProduct'
 
 
 //CREATE new product - CREATE
@@ -54,8 +54,15 @@ const createProduct = (req, res) => {
 // READ products - Get
 
 const getProducts = (req, res) => {
-    console.log(req.body)
-    Product.get().then(product => {
+    getProductsMan().then(product => {
+        res.send(product)
+    }).catch(err =>{
+        res.status(404).send(err)
+    })
+}
+
+const getTopten = (req, res) => {
+    topTenMan().then(product =>{
         res.send(product)
     }).catch(err =>{
         res.status(404).send(err)
@@ -97,7 +104,8 @@ export{
     createProduct,
     getProducts,
     getById,
-    getByCategoryId
+    getByCategoryId,
+    getTopten
 }
 
 
