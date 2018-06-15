@@ -26,13 +26,10 @@
 //             type: DataTypes.STRING,
 //             allowNull: false
 //         },
-
-
 //         paymethod: {
 //             type: DataTypes.STRING,
 //             allowNull: false
 //         },
-
 //         totalPrice: {
 //             type: DataTypes.DECIMAL(10, 2),
 //             allowNull: false
@@ -47,14 +44,11 @@
 //         paranoid: true,
 //         underscored: true
 //     });
-
 //     Order.associate = function(models) { //
 //         // associations can be defined here
-
 //         Order.belongsTo(user)
 //         Order.hasMany(detOrder)
 //     };
-
 //     return Order;
 // };
 
@@ -68,36 +62,31 @@ module.exports = (sequelize, DataTypes) => {
         //     primaryKey: true,
         //     type: DataTypes.INTEGER
         // },
-        name: {
-            type: DataTypes.STRING,
+
+        orderStatus: {
+            type: DataTypes.ENUM,
+            values: ['processing', 'fulfilled'],
             allowNull: true
         },
-
-        status: {
-            type: DataTypes.STRING //,
-                //allowNull: false
-        },
-        address: {
-            type: DataTypes.STRING //,
-                //allowNull: false
-        },
-
-
         paymethod: {
-            type: DataTypes.STRING //,
-                //allowNull: false
+            type: DataTypes.STRING,
+            allowNull: false
         },
-
-        totalPrice: {
-            type: DataTypes.DECIMAL(10, 2) //,
-                //allowNull: false
-        },
-        description: {
-            type: DataTypes.STRING //,
-                //allowNull: false
-        },
-        idUser: {
+        //Keys imported from Cart
+        userId: {
             type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        cartId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        addressId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        totalPrice: {
+            type: DataTypes.DECIMAL(10, 2),
             allowNull: false
         },
 
@@ -106,7 +95,8 @@ module.exports = (sequelize, DataTypes) => {
 
     Order.associate = function(models) {
         //
-        Order.hasMany(models.Order)
+
+        Order.belongsTo(models.Cart)
 
 
     };

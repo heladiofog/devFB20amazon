@@ -78,7 +78,7 @@ module.exports = (sequelize, DataTypes) => {
             through: 'UserCart'
         });
 
-        User.belongsTo(models.Order)
+        //User.belongsTo(models.Order)
 
         // associations can be defined here
 

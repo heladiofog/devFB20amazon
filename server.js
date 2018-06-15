@@ -43,28 +43,27 @@ app.listen(port, () => {
     //Tests from here 
 
 
-    const User = require("./models").User;
-    const Cart = require("./models").Cart;
-    const Order = require("./models").Order;
-    User.create({
-            name: "Raul Armas12222871",
-            password: "holi",
-            email: "raularmassantiago2228271@gmail.com",
-            gender: "Masculino"
-        })
-        .then(user => {
-            Order.create({
-                    name: ' producto',
-                    idUser: user.id
-                })
-                .then(() => {
-                    console.log("Se creo un usuario y su orden");
-                })
-                .catch(err => {
-                    console.log(err)
-                });
-
-        }).catch(err => { console.log(err); });
+    // const User = require("./models").User;
+    // const Cart = require("./models").Cart;
+    // const Order = require("./models").Order;
+    // User.create({
+    //         name: "Raul Armas12222871",
+    //         password: "holi",
+    //         email: "raularmassantiago2228271@gmail.com",
+    //         gender: "Masculino"
+    //     })
+    //     .then(user => {
+    //         Order.create({
+    //                 name: ' producto',
+    //                 idUser: user.id
+    //             })
+    //             .then(() => {
+    //                 console.log("Se creo un usuario y su orden");
+    //             })
+    //             .catch(err => {
+    //                 console.log(err)
+    //             });
+    //     }).catch(err => { console.log(err); });
 
 
 

@@ -6,6 +6,11 @@ import { authlogin } from '../controllers/auth';
 import { createUser, patchUser, getById, deleteUser } from '../controllers/controllerUsers';
 import { verifyToken } from '../middlewares/midelware'
 
+
+//import from order S2-005
+
+import { createOrder, getOrderById, patchOrderStatus } from '../controllers/controllerOrder';
+
 const router = express.Router();
 
 router.get('/test', verifyToken, testApi);
@@ -53,6 +58,72 @@ router.post('/login', authlogin);
 router.post('/users', createUser);
 router.patch('/users', verifyToken, patchUser)
 router.delete('/users', deleteUser)
+
+//endPointsOrder
+router.post('/order', createOrder);
+/**
+ * @swagger
+ * /order:
+ *  post:
+ *      tags:
+ *          - name: ORDERS
+ *      description: Create a order
+ *      produces: 
+ *          - application/json
+ *      parameters:
+ *          - name: body
+ *            in: body
+ *            required: true
+ *            schema:
+ *              type: object
+ *              properties:
+ *                  idCart:
+ *                      type: number
+ *                      required: true
+ *                      example: 1
+ *      responses:
+ *          200:
+ *              description: order created
+ *              properties:
+ *                 id:  
+ *                    type:integer
+ *                    required:true
+ *                    example:1
+ *                 orderStatus:
+ *                    type:enum
+ *                    required:false
+ *                    example:processing
+ *                 paymethod:
+ *                    type:string
+ *                    required:true
+ *                    example:paymethod
+ *                 userId:
+ *                    type:integer
+ *                    required:true
+ *                    example:2
+ *                 cartId:
+ *                    type:integer
+ *                    required:true
+ *                    example:3
+ *                 orderId:
+ *                    type:integer
+ *                    required:true
+ *                    example:4
+ *                 totalPrice:
+ *                    type:decimal
+ *                    required:false
+ *                    example:123.21
+ *                                  
+ *          400:
+ *              description: error on controllers
+ * 
+ *          500:
+ *              description: error on created
+ *        
+ */
+
+router.get('/order/:id', getOrderById);
+router.patch('/order', createOrder);
 
 // router.get('/users', getById)
 
