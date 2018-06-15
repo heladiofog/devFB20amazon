@@ -268,10 +268,10 @@ router.get('/category/:uid', getProductByCategory)
  */ 
 
 
-router.post('/product', createProduct);
-router.get('/product', getProducts);
-router.get('/product', getById);
-router.get('/product', getByCategoryId)
+router.post('/products', createProduct);
+router.get('/products', getProducts);
+router.get('/products', getById);
+router.get('/products', getByCategoryId)
 
 
 

@@ -1,60 +1,58 @@
 
 
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const Product = sequelize.define('Product', {
         shortName: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            required:true
+            type: DataTypes.STRING,
+            validate:{
+                notEmpty: true
+            }
         },
         name: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            required:true
+            type: DataTypes.STRING,
+            validate:{
+                notEmpty: true
+            }
         },
                 
         description:{
-            type: Sequelize.STRING,
-            allowNull: false
+            type: DataTypes.STRING,
+            validate:{
+                notEmpty: true
+            }
         },
         
         unitPrice:{
-            type: Sequelize.DECIMAL(10,2),
-            allowNull: false,
-            required:true
+            type: DataTypes.DECIMAL(10,2),
+            allowNull: false
         },
         
         itemSKU:{
-            type: Sequelize.STRING,
-            allowNull: false,
-            required:true
+            type: DataTypes.STRING,
+            validate:{
+                notEmpty: true
+            }
         },
 
         stock:{
-            type: Sequelize.INTEGER,
-            allowNull: false,
-            required:true
+            type: DataTypes.INTEGER,
+            allowNull: false
         },
 
         image:{
-            type: Sequelize.STRING,
-            required:true
+            type: DataTypes.STRING,
+            required:true,
         },
 
         CategoryId:{
-            type: Sequelize.INTEGER
+            type: DataTypes.INTEGER
         },
 
         //Sirve para ver el estado del producto (borrado logico)
         status:{ 
-            type: Sequelize.BOOLEAN,
-            validate:{
-               defaultValue: true 
-            },
+            type: DataTypes.BOOLEAN
         }
         
-        
-
     })
 
     Product.associate = function(models) {

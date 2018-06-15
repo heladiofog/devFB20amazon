@@ -2,43 +2,51 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Products', {
-        id: {
-            type: Sequelize.UUID,
-            primaryKey: true,
-            defaultValue: DataTypes.UUIDV4,
-            allowNull: false,
-            autoIncrement: false,
-          },
+    id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+    },
     shortName: {
         type: Sequelize.STRING,
-        allowNull: false
+        validate:{
+            notEmpty: true
+        }
     },
     name: {
         type: Sequelize.STRING,
-        allowNull: false
+        validate:{
+            notEmpty: true
+        }
     },
             
     description:{
         type: Sequelize.STRING,
-        allowNull: false
+        validate:{
+            notEmpty: true
+        }
     },
     
     unitPrice:{
         type: Sequelize.DECIMAL(10,2),
-        allowNull: false,
-        required: true
+        validate:{
+            notNull: true
+        }
     },
     
     itemSKU:{
         type: Sequelize.STRING,
-        allowNull: false,
-        required: true
+        validate:{
+            notEmpty: true
+        }
     },
 
     stock:{
         type: Sequelize.INTEGER,
-        allowNull: false,
-        required: true
+        validate:{
+            notNull: true
+        }
     },
 
     image:{
@@ -54,13 +62,18 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         validate:{
            defaultValue: true 
-        },
-    }
-    
-    
-
-});
-  },
+        }
+    },
+    createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+  });
+},
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Products');
   }

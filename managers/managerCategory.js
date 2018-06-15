@@ -1,4 +1,6 @@
+import db from '../models';
 
+const Category = db.Category
 
 const createCategoryMan = (categoryData) => {
     return new Promise ( (resolve, reject) =>{

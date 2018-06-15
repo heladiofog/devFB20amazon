@@ -6,6 +6,7 @@ const Product = db.Product
 
 //CREATE new product - CREATE
 const createProductMan = (productData) => {
+    console.log(productData)
     return new Promise ((resolve,reject)=>{
         Product.create({
             shortName: productData.shortName,
