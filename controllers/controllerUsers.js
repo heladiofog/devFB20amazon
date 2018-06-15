@@ -8,9 +8,9 @@ const createUser = (req, res) => {
     .then((user) => {
         if (user) {
             res.status(201).json(user) //ok
-            
+
         } else {
-            res.status(400).json('err on controller')//error   
+            res.status(400).json('err on controller')//error
         }
     })
     .catch(err => {
@@ -19,46 +19,36 @@ const createUser = (req, res) => {
     })
 }
 
+const patchUser = (req, res) =>{
+    patchUserMan(req)
+        .then((user) =>{
+            if(user){
+                res.status(202).json(user)
+            } else{
+                res.status(400).json('we couldnt update the user info')
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({'message': err})
+        })
+}
 
+//Get user by Id - Read
 
-//Get user by Id - Read 
-
-// const getById = (req, res) => {
-//     console.log(req.body)
-//     const {uid} = req.params
-//         console.log(uid)
-//     User.findById(uid).then(user => {
-//         res.send(user)
-//     }).catch(err =>{
-//         res.status(404).send(err)
-//     })
-// }
-
-
-
-//Update users - Update
-// app.patch('/users/:uid' , (req, res) =>{
-//     const {uid} = req.params;
-//     Users.findByIdAndUpdate(uid, req.body, (err, user) =>{
-//         Users.findById(uid).exec()
-//             .then(user => res.send(user))
-//             res.send(user);
-//     }).catch(err => res.send(err));
-// });
-
-// //Delete all users - Delete
-
-// app.delete('/users/:uid', (req, res) =>{
-//     const {uid} = req.params;
-
-//     Users.findByIdAndRemove(uid).exec().then(
-//         user => res.send({message: "User not found!"})
-//     )
-// })
-// app.listen(3000, () =>{
-//     console.log('Server on 3000')
-// })
+const getById = (req, res) => {
+     console.log(req.body)
+     const {uid} = req.params
+         console.log(uid)
+     User.findById(uid).then(user => {
+         res.send(user)
+     }).catch(err =>{
+         res.status(404).send(err)
+     })
+ }
 
 export{
-    createUser
+    createUser,
+    patchUser,
+    getById
 }

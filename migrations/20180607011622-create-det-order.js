@@ -8,10 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      OrderId: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
       CartId: {
         type: Sequelize.INTEGER,
         allowNull: false
@@ -28,6 +24,10 @@ module.exports = {
         type: Sequelize.NUMERIC,
         required: true
       },
+      NameProduct: {
+        type: Sequelize.STRING,
+        required: false
+      }
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -7,7 +7,7 @@ const createUserMan = (userData) => {
     return new Promise ((resolve,reject)=>{
         User.create({
             email: userData.email,
-            nombre: userData.nombre,
+            name: userData.nombre,
             password: userData.password,
             gender: userData.gender,
             birdthDate: userData.birdthDate,
@@ -20,7 +20,7 @@ const createUserMan = (userData) => {
     })
 }
 
-//Get user by Id - Read 
+//Get user by Id - Read
 
 const getById = (iduser) => {
     console.log(iduser)
@@ -35,8 +35,23 @@ const getById = (iduser) => {
 
 const patchUserMan = (req) =>{
     return new Promise ((resolve, reject ) =>{
-        User.findByIdAndUpdate()
+        User.update({
+            name: req.body.name,
+            gender: req.body.gender,
+            birdthDate: req.body.birdthDate
+        },{
+            where:{
+                id:req.user.id
+            }
+        }).then(user1 => {
+            getById(req.user.id)
+                .then(user => resolve(user))
+                .catch(err => reject(err))
+        }).catch(err => {
+            reject(err)
+        })
     })
+}
     // //console.log(iduser)
     // const {uid} = iduser
     // //console.log(uid)
@@ -45,7 +60,7 @@ const patchUserMan = (req) =>{
     //         .then(user => res.send(user))
     //         res.send(user);
     // })
-}
+
 // app.patch('/users/:uid' , (req, res) =>{
 //         const {uid} = req.params;
 //         Users.findByIdAndUpdate(uid, req.body, (err, user) =>{

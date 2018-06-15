@@ -9,11 +9,11 @@ import {verifyToken} from '../middlewares/midelware';
 
 const router = express.Router();
 
-//Prueba 
+//Prueba
 /**
  * @swagger
  * /test:
- *   get: 
+ *   get:
  *     description: show server running
  *     produces:
  *       - application/json
@@ -39,10 +39,13 @@ const router = express.Router();
 router.get('/test', verifyToken, testApi);
 router.post('/login',  authlogin);
 router.post('/users', createUser);
+
+//router.post('/detorder', createDet_Order);
+//router.patch('/detorder', verifyToken, patchDet_Order);
+//router.patch('/detorder', verifyToken, getByIdDet_Order);
 //router.patch('/users', verifyToken, updateUser);
 
 //router.get('/users/:uid', getById)
 
 
 export default router
-

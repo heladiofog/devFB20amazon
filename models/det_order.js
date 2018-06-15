@@ -1,17 +1,13 @@
 'use strict';
 module.exports = (sequelize, Sequelize) => {
-  var Det_Order = sequelize.define('Det_Order', {
-    OrderId: {
-      type: Sequelize.INTEGER,
-      allowNull: false
-    },
+  const Det_Order = sequelize.define('Det_Order', {
     CartId: {
       type: Sequelize.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     ProductId: {
       type: Sequelize.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     Quantity: {
       type: Sequelize.INTEGER,
@@ -20,12 +16,15 @@ module.exports = (sequelize, Sequelize) => {
     UnitPrice: {
       type: Sequelize.NUMERIC,
       required: true
+    },
+    NameProduct: {
+      type: Sequelize.STRING,
+      requiered: false
     }
   },
 );
   Det_Order.associate = function(models) {
   Det_Order.belongsTo(models.Cart);
-  Det_Order.belongsTo(models.Order);
   Det_Order.hasMany(models.Product);
   };
   return Det_Order;
