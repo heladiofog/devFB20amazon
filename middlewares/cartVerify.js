@@ -8,12 +8,21 @@ import {getCartByUserId, createCartFirst} from '../controllers/cart';
 
 
 const verifyCart = (req, res, next) =>{
-    if(getCartByUserId(req.user.id)){
-        req.user = data
-        next();     
-    }else {
-        createCartFirst(req.user.id)
-        next(); 
-    }       
-}
+    getCartByUserId(req.user.id)
+    .then((cart) =>{
+        if(cart){
+            req.cart =cart; 
+            next();  
 
+        }else{
+            req.cart = null;
+            next(); 
+        }
+              
+    })      
+          
+    .catch((cart) =>{
+        console.log(err)
+        res.status(500).json({'message': err})
+    })     
+};

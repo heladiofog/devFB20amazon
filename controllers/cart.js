@@ -1,8 +1,8 @@
-import {createCartMan, patchCartMan, deleteCartMan, getCartByIdMan} from '../managers/cart'
+import {createCartMan, patchCartMan, deleteCartMan, getCartByIdMan, getCartByUserIdMan} from '../managers/cart'
 
-//This createsa a Cart
+//This creates a Cart
 const createCart = (req, res) => {
-    let data = req.body
+    let data = req
     createCartMan(data)
     .then((cart) => {
         if (cart) {
@@ -45,6 +45,8 @@ const getCartById = (req, res) => {
         res.status(404).send(err)
     })
 }
+
+
 
 //Get cart by UserId - Read 
 

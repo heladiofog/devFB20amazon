@@ -4,38 +4,78 @@ import db from '../models';
 const Cart = db.Cart
 
 //Update new Cart with products - CREATE
-const createCartMan = (productpush) => {
-    return new Promise ((resolve,reject)=>{
-        getProd = (prod, res) => {
-            findProduct(prod.data.id)
-            .then((product) =>{
-                  let producto = product;
-                Cart.update({
-                    UserId: req.user.id,
-                    status: true
+const createCartMan = (req) => {
+        if(req.cart){
+            //agrega productos al carrito
+            return new Promise ((resolve,reject)=>{
+                getProd = (prod, res) => {
+                    findProduct(prod.data.id)
+                    .then((product) =>{
+                          let producto = product;
+                                Cart.update({
+                                UserId: req.user.id,
+                                status: true
 
-                }).then((cart) => {
-                    
-                    Det_Order.create({
-                        CartId: cart.id,
-                        ProductId: product.id,
-                        NameProduct: product.name,
-                        UnitPrice: product.price,
-                        Quantity: product.quantity
-                    })
+                                })
+                                .then((cart) => {
+                                    
+                                    Det_Order.create({
+                                        CartId: cart.id,
+                                        ProductId: product.id,
+                                        NameProduct: product.name,
+                                        UnitPrice: product.price,
+                                        Quantity: product.quantity
+                                    })
 
-                    resolve (cart);
-                }).catch((err) => {
-                    reject(err)
-                }) 
+                                    resolve (cart);
+                                }).catch((err) => {
+                                    reject(err)
+                                }); 
+                            
 
-            .catch(err => {
-                console.log(err)
-                res.status(400).json({'message' :'error on find'})
-            })       
-        })    
-    }
-});
+                    }).catch((err) => {
+                        console.log(err)
+                        res.status(400).json({'message' :'error on find'})
+                    })       
+                }
+            });    
+    
+        }else{
+            //crea carrito y crea productos
+            createCartFirst(req.user.id)
+            return new Promise ((resolve,reject)=>{
+                  const  getProd = ((prod, res) => {
+                        findProduct(prod.data.id)
+                        .then((product) =>{
+                            let producto = product;
+                            Cart.update({
+                                UserId: req.user.id,
+                                status: true
+            
+                            }).then((cart) => {
+                                
+                                Det_Order.create({
+                                    CartId: cart.id,
+                                    ProductId: product.id,
+                                    NameProduct: product.name,
+                                    UnitPrice: product.price,
+                                    Quantity: product.quantity
+                                })
+            
+                                resolve (cart);
+                            }).catch((err) => {
+                                reject(err)
+                            }) 
+            
+                        .catch((err) => {
+                            console.log(err)
+                            res.status(400).json({'message' :'error on find'})
+                        })       
+                        })    
+                    });
+            })
+        }  
+    
 }
 
 const createCartFirst = (uid) => {
@@ -43,6 +83,14 @@ const createCartFirst = (uid) => {
         Cart.create({
                 UserId: uid,
                 status: true
+        })
+        .then(cart=>{
+            req.body.cart = cart;
+            res.status(200) 
+        })
+        .catch(err=>{
+            console.log(err)
+            res.status(500).json({'message': err})
         })
     });
 
