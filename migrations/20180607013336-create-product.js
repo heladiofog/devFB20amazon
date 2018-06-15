@@ -1,41 +1,52 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Product', {
-        id: {
-            type: Sequelize.UUID,
-            primaryKey: true,
-            defaultValue: DataTypes.UUIDV4,
-            allowNull: false,
-            autoIncrement: false,
-          },
+    return queryInterface.createTable('Products', {
+    id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+    },
     shortName: {
         type: Sequelize.STRING,
-        allowNull: false
+        validate:{
+            notEmpty: true
+        }
     },
     name: {
         type: Sequelize.STRING,
-        allowNull: false
+        validate:{
+            notEmpty: true
+        }
     },
             
     description:{
         type: Sequelize.STRING,
-        allowNull: false
+        validate:{
+            notEmpty: true
+        }
     },
     
     unitPrice:{
         type: Sequelize.DECIMAL(10,2),
-        allowNull: false
+        validate:{
+            notNull: true
+        }
     },
     
     itemSKU:{
         type: Sequelize.STRING,
-        allowNull: false
+        validate:{
+            notEmpty: true
+        }
     },
 
-    Stock:{
+    stock:{
         type: Sequelize.INTEGER,
-        allowNull: false
+        validate:{
+            notNull: true
+        }
     },
 
     image:{
@@ -51,14 +62,19 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         validate:{
            defaultValue: true 
-        },
-    }
-    
-    
-
-});
-  },
+        }
+    },
+    createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+  });
+},
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Product');
+    return queryInterface.dropTable('Products');
   }
 };

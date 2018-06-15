@@ -1,59 +1,63 @@
 
 
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const Product = sequelize.define('Product', {
         shortName: {
-            type: Sequelize.STRING,
-            allowNull: false
+            type: DataTypes.STRING,
+            validate:{
+                notEmpty: true
+            }
         },
         name: {
-            type: Sequelize.STRING,
-            allowNull: false
+            type: DataTypes.STRING,
+            validate:{
+                notEmpty: true
+            }
         },
                 
         description:{
-            type: Sequelize.STRING,
-            allowNull: false
+            type: DataTypes.STRING,
+            validate:{
+                notEmpty: true
+            }
         },
         
         unitPrice:{
-            type: Sequelize.DECIMAL(10,2),
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false
         },
         
         itemSKU:{
-            type: Sequelize.STRING,
-            allowNull: false
+            type: DataTypes.STRING,
+            validate:{
+                notEmpty: true
+            }
         },
 
-        Stock:{
-            type: Sequelize.INTEGER,
+        stock:{
+            type: DataTypes.INTEGER,
             allowNull: false
         },
 
         image:{
-            type: Sequelize.STRING
+            type: DataTypes.STRING,
+            required:true,
         },
 
         CategoryId:{
-            type: Sequelize.INTEGER
+            type: DataTypes.INTEGER
         },
 
         //Sirve para ver el estado del producto (borrado logico)
         status:{ 
-            type: Sequelize.BOOLEAN,
-            validate:{
-               defaultValue: true 
-            },
+            type: DataTypes.BOOLEAN
         }
         
-        
-
     })
 
     Product.associate = function(models) {
         // associations can be defined here
-        Product.belongstoMany(models.Category)
+        Product.belongsTo(models.Category)
         // Product.belongsto(models.det_order),
         // Product.hasMany(models.Cart)
     };
