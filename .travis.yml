@@ -12,3 +12,5 @@ deploy:
     branch: development
 script:
   - "npm run start"
+notifications:
+    slack: devfbatch20cdmx:w3LCs9WMPHyNjZYeWlCmTpa4
