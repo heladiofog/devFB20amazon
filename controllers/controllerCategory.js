@@ -31,10 +31,19 @@ const getCategory = (req, res) => {
 }
 
 const getProductByCategory = (req, res) =>{
-    console.log(req.body)
+    //console.log(req.body)
     const {uid} = req.params
         //console.log(uid)
-        Category.findById(uid).then( user =>{
+        Product.findAll({
+            where:{
+                CategoryId: uid
+            },
+            attributes: [
+                uid.description,
+                uid.image,
+                uid.name
+            ]
+        }).then( user =>{
             res.send(user)
         }).catch(err => {
             res.status(404).send(err)
