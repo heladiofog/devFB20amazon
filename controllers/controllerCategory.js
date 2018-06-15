@@ -1,6 +1,7 @@
 import db from '../models';
 
 const Category = db.Category
+const Product = db.Product
 
 import { createCategoryMan, getCategoryMan } from "../managers/managerCategory"
 
@@ -31,20 +32,19 @@ const getCategory = (req, res) => {
 }
 
 const getProductByCategory = (req, res) =>{
-    //console.log(req.body)
     const {uid} = req.params
-        //console.log(uid)
+    console.log(uid)
         Product.findAll({
             where:{
                 CategoryId: uid
             },
             attributes: [
-                uid.description,
-                uid.image,
-                uid.name
+                'description',
+                'image',
+                'name'
             ]
-        }).then( user =>{
-            res.send(user)
+        }).then( product =>{
+            res.send(product)
         }).catch(err => {
             res.status(404).send(err)
         })
