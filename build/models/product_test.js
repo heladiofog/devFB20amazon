@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function (sequelize, DataTypes) {
-  var Product = sequelize.define('Product', {
+  var Product_test = sequelize.define('Product_test', {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
@@ -13,10 +13,8 @@ module.exports = function (sequelize, DataTypes) {
     desc: DataTypes.STRING,
     price: DataTypes.NUMERIC
   }, {});
-  Product.associate = function (models) {
-    Product.belongsToMany(models.Category, {
-      through: 'ProductCategory'
-    });
+  Product_test.associate = function (models) {
+    //Product(models.Category);
   };
-  return Product;
+  return Product_test;
 };

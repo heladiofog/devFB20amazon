@@ -59,9 +59,31 @@ app.use('/api/v1', _routers2.default);
 
 app.listen(port, function () {
     console.log('Server start at port ' + port);
+
+    //  const Category = require("./models").Category;
+    // const Product = require("./models").Product;
+    // Category.create({
+    //     name: "Mascotas", description: "Animales"
+    // })
+    // .then(category => {
+    //     Product.create({
+    //         shortName: "correa",
+    //         name: "correa para perro",
+    //         description: "lazo que se le amarra al perro",
+    //         unitPrice: 15.50,
+    //         itemSKU: "2345243",
+    //         Stock: 23,
+    //         CategoryId: .category.id
+    //    })
+
+    //     .then(() => {
+    //         console.log("Bien");
+    //     });
+
+    // });
+
+
     // db.sequelize.sync({
     //     force: true
     // })
 });
-
-//export default app;

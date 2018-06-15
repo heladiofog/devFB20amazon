@@ -1,20 +1,20 @@
 "use strict";
 
-module.exports = function (sequelize, DataTypes) {
+module.exports = function (sequelize, Sequelize) {
     var Category = sequelize.define("Category", {
         name: {
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             unique: true,
             allowNull: false
         },
         description: {
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             allowNull: false
         }
     });
 
     Category.associate = function (models) {
-        // Category.belongsToMany(models.Product);
+        Category.hasMany(models.Product);
     };
 
     return Category;
