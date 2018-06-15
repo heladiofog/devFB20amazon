@@ -8,7 +8,7 @@
   },
   "scripts": {
     "server": "nodemon server.js --exec babel-node --presets es2015,stage-2",
-    "build": "babel -d ./build . --ignore node_modules,client  --copy-files",
+    "build": "babel . -d ./build --ignore node_modules,client,build  --copy-files",
     "start": "node ./build/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
