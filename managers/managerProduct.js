@@ -32,7 +32,7 @@ const createProductMan = (productData) => {
 const getProductsMan = (productData) => {
     return new Promise ((resolve, reject) =>{
         Product.findAll({
-            attributes:['shortName','description','image'],
+            attributes:['id', 'shortName','description','image'],
             where:{
                 status: true
             }
@@ -49,7 +49,7 @@ const getProductsMan = (productData) => {
  const topTenMan = (productData) => {
     return new Promise ((resolve, reject) =>{
         Product.findAll({
-            attributes:['shortName','description','image'],
+            attributes:['id', 'shortName','description','image'],
             where:{
                 status: true,
                 CategoryId: 14
@@ -70,7 +70,7 @@ const getByCategoryIdMan = (CategoryId) => {
     return new Promise ((resolve, reject) =>{
         console.log(CategoryId)
         Product.findById(CategoryId).then(product => {
-            resolve(user)
+            resolve(product)
         }).catch(err =>{    
             reject(err)
         }) 

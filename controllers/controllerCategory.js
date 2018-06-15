@@ -39,6 +39,7 @@ const getProductByCategory = (req, res) =>{
                 CategoryId: uid
             },
             attributes: [
+                'id',
                 'description',
                 'image',
                 'name'
