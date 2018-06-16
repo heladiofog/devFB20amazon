@@ -48,7 +48,7 @@ var getProductByCategory = function getProductByCategory(req, res) {
         where: {
             CategoryId: uid
         },
-        attributes: ['description', 'image', 'name']
+        attributes: ['id', 'description', 'image', 'name']
     }).then(function (product) {
         res.send(product);
     }).catch(function (err) {

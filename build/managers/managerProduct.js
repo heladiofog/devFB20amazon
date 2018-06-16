@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.topTenMan = exports.getByIdMan = exports.getByCategoryIdMan = exports.getProductsMan = exports.createProductMan = undefined;
+exports.topTenMan = exports.getByIdMan = exports.getProductsMan = exports.createProductMan = undefined;
 
 var _models = require('../models');
 
@@ -40,7 +40,7 @@ var createProductMan = function createProductMan(productData) {
 var getProductsMan = function getProductsMan(productData) {
     return new Promise(function (resolve, reject) {
         Product.findAll({
-            attributes: ['shortName', 'description', 'image'],
+            attributes: ['id', 'shortName', 'description', 'image'],
             where: {
                 status: true
             }
@@ -55,7 +55,7 @@ var getProductsMan = function getProductsMan(productData) {
 var topTenMan = function topTenMan(productData) {
     return new Promise(function (resolve, reject) {
         Product.findAll({
-            attributes: ['shortName', 'description', 'image'],
+            attributes: ['id', 'shortName', 'description', 'image'],
             where: {
                 status: true,
                 CategoryId: 14
@@ -74,7 +74,7 @@ var getByCategoryIdMan = function getByCategoryIdMan(CategoryId) {
     return new Promise(function (resolve, reject) {
         console.log(CategoryId);
         Product.findById(CategoryId).then(function (product) {
-            resolve(user);
+            resolve(product);
         }).catch(function (err) {
             reject(err);
         });
@@ -140,6 +140,5 @@ var getByIdMan = function getByIdMan(idproduct) {
 
 exports.createProductMan = createProductMan;
 exports.getProductsMan = getProductsMan;
-exports.getByCategoryIdMan = getByCategoryIdMan;
 exports.getByIdMan = getByIdMan;
 exports.topTenMan = topTenMan;

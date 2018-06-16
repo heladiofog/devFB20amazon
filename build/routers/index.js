@@ -282,8 +282,7 @@ router.get('/category/:uid', _controllerCategory.getProductByCategory);
 
 router.post('/products', _controllerProduct.createProduct);
 router.get('/products', _controllerProduct.getProducts);
-router.get('/products', _controllerProduct.getById);
-router.get('/products', _controllerProduct.getByCategoryId);
+router.get('/product/:uid', _controllerProduct.getById);
 router.get('/topten', _controllerProduct.getTopten);
 
 exports.default = router;

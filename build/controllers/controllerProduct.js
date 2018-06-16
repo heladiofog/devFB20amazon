@@ -3,9 +3,17 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.getTopten = exports.getByCategoryId = exports.getById = exports.getProducts = exports.createProduct = undefined;
+exports.getTopten = exports.getById = exports.getProducts = exports.createProduct = undefined;
+
+var _models = require('../models');
+
+var _models2 = _interopRequireDefault(_models);
 
 var _managerProduct = require('../managers/managerProduct');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Product = _models2.default.Product;
 
 //CREATE new product - CREATE
 var createProduct = function createProduct(req, res) {
@@ -74,7 +82,6 @@ var getTopten = function getTopten(req, res) {
 //READ product by Id [Detalle de Producto]- Get 
 
 var getById = function getById(req, res) {
-    console.log(req.body);
     var uid = req.params.uid;
 
     console.log(uid);
@@ -85,22 +92,7 @@ var getById = function getById(req, res) {
     });
 };
 
-//READ product by CategoryId - Get 
-
-var getByCategoryId = function getByCategoryId(req, res) {
-    console.log(req.body);
-    var CategoryId = req.params.CategoryId;
-
-    console.log(CategoryId);
-    Product.findById(CategoryId).then(function (product) {
-        res.send(product);
-    }).catch(function (err) {
-        res.status(404).send(err);
-    });
-};
-
 exports.createProduct = createProduct;
 exports.getProducts = getProducts;
 exports.getById = getById;
-exports.getByCategoryId = getByCategoryId;
 exports.getTopten = getTopten;
